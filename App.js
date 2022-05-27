@@ -4,9 +4,7 @@ import Main from './components/Main.jsx'
 
 export default function App() {
   return (
-    <View>
-     <Main />
-    </View>
+    <Main/>
   );
 }
 
