@@ -10,9 +10,3 @@ const main = () => {
 }
 
 export default main;
-
-fetchData = async () => {
-    const response = await fetch("http://myipadress:5001/articles");
-    const articles = await response.json();
-    this.setState({ data: articles });
-};
