@@ -4,12 +4,6 @@ import ContactosFlatlist from './contactos-flatlist'
 import React, { useState, useEffect } from 'react';
 import {getAll} from './backend'
 
-const contactold = [{Id:3,Nombre:'Juan', FechaNac:'10/5/2001'}, 
-{Id:5, Nombre:'Juana', FechaNac:'11/2/2000'},
-{Id:8, Nombre:'Mia', FechaNac:'21/1/2002'},
-
-]
-
 export default function Main({navigation}) {
 
 
