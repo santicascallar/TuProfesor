@@ -1,17 +1,17 @@
 import React from 'react';
 import { Alert, StyleSheet, Text, View, TouchableWithoutFeedback, TextInput } from 'react-native';
-import index from './components/index.jsx'
-import Main from './main'
-import React, { useState, useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Main from './components/Main.jsx'
+//import Main from './main'
+//import React, { useState, useEffect } from 'react';
+//import { NavigationContainer } from '@react-navigation/native';
+//import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //const Stack = createNativeStackNavigator();
 
 
 export default function App() {
   return (
-    <index />
+    <Main />
     
   );
   /*return (

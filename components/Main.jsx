@@ -1,15 +1,15 @@
 import React from 'react';
-import { Alert, StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
 
 const main = () => {
     return (
         <View>
-            <Text>Tu Profesor</Text>
-            
-            <Image source={{}}></Image>
+            <Image 
+                style = {styles.logo}
+                source={require('../src/imgs/logo.png')}>
+            </Image>
 
             <TouchableHighlight
-            onPress={onPress}
             >
             <Text>Profesor</Text>
             </TouchableHighlight>
@@ -17,5 +17,12 @@ const main = () => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    logo: {
+      width: 200,
+      height: 200,
+    },
+  });
 
 export default main;
