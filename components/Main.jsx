@@ -9,6 +9,14 @@ const main = () => {
                 source={require('../src/imgs/logo.png')}>
             </Image>
 
+            <Button
+                title="Go somewhere"
+                onPress={() => {
+                // Navigate using the `navigation` prop that you received
+                navigation.navigate('SomeScreen');
+            }}
+    />
+
             <TouchableHighlight
             >
             <Text>Profesor</Text>
