@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
+import { NavigationContainer } from '@react-navigation/native';
 
-const main = () => {
+const Main = () => {
 
     const navigation = useNavigation();
 
@@ -12,18 +13,11 @@ const main = () => {
                 style = {styles.logo}
                 source={require('../src/imgs/logo.png')}>
             </Image>
-
-            <TouchableOpacity
-                onPress={() => navigation.navigate('logIn')}
-            >
-                <Text>Iniciar sesion como Alumno</Text>
-            </TouchableOpacity>
-
-            <TouchableHighlight
-            >
-            <Text>Profesor</Text>
-            </TouchableHighlight>
-
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('LogIn')}
+                >
+                    <Text>Iniciar sesion como Alumno</Text>
+                </TouchableOpacity>
         </View>
     )
 }
@@ -35,4 +29,4 @@ const styles = StyleSheet.create({
     },
   });
 
-export default main;
+export default Main;
