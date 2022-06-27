@@ -2,7 +2,6 @@ import React from 'react';
 import { Alert, StyleSheet, Text, View, TouchableWithoutFeedback, TextInput } from 'react-native';
 import Main from './screens/Main.jsx';
 import LogIn from './screens/LogIn.jsx';
-//import Main from './main'
 //import React, { useState, useEffect } from 'react'; (flatlist, contactos-flatlist, main y backend)
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
