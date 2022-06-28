@@ -4,7 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //screens
 import Main from "./screens/Main.jsx";
-import logIn from "./screens/logIn.jsx";
+import LogIn from "./screens/LogIn";
+import Index from "./screens/Index";
 
 const MainStackNavigator = createNativeStackNavigator();
 
@@ -18,8 +19,12 @@ function MyStack(){
                 component={Main}
             />
             <MainStackNavigator.Screen
-                name="logIn"
-                component={logIn}
+                name="LogIn"
+                component={LogIn}
+            />
+            <MainStackNavigator.Screen
+                name="Index"
+                component={Index}
             />
         </MainStackNavigator.Navigator>
     );
