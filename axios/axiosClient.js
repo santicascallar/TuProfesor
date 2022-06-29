@@ -1,10 +1,10 @@
-import axios from "axios";
+/*import axios from "axios";
 
 const axiosClient = axios.create({
     baseURL: 'htpp://localhost:5000',
 })
 
-/*export const getAllProfesores = async () => {
+export const getAllProfesores = async () => {
     return axiosClient.get('/profesores')
     .then(res => {
         if(res.status < 300) return res.data;

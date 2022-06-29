@@ -7,15 +7,40 @@ import axios from 'axios';
 
 const LogIn = () => {
 
-    const [usuario, setUsuario] = useState('');
-    const [contraseña, setContraseña] = useState('');
+    const [_usuario, setUsuario] = useState('');
+    const [_contrasena, setContraseña] = useState('');
 
-    //const inicioSesionBoton = () => {} /ver como hacer para que el botono sea generico
+    const inicioSesionBoton = () => {
+        console.log({_usuario,_contrasena})
 
-    useEffect(() =>{
+
+        fetch("http://localhost:3000/login?usuario="+_usuario+"&contrasena="+_contrasena,
+        {method: 'POST',
+        redirect: 'follow'})
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if(data.msj == 'hola'){
+                navigation.navigate('Index')
+            }
+        });
+
+        /*axios.post("http://localhost:3000/login", {
+            usuario : _usuario,
+            contrasena : _contrasena
+
+        })
+        .then(res => {
+            console.log(res);
+            //setUsuario(res.data);
+            //setContraseña(res.data);
+        })*/
+    }
+
+    /*useEffect(() =>{
         axios.post("https://localhost:5000/users/LogIn", {
-            usuario : setUsuario,
-            contraseña : setContraseña
+            usuario : _usuario,
+            contrasena : _contrasena
 
         })
         .then(res => {
@@ -24,15 +49,16 @@ const LogIn = () => {
             setContraseña(res.data);
         })
     })
+*/
 
     return (
         <View>
             <Text>Tu Profesor</Text>
-            <CustomInput placeholder="Correo Electronico" value={usuario} setValue={setUsuario}/>
-            <CustomInput placeholder="Contraseña" seguridadPassword={true} value={contraseña} setValue={setContraseña}/>
+            <CustomInput placeholder="Usuario" value={_usuario} setValue={setUsuario}/>
+            <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_contrasena} setValue={setContraseña}/>
 
             <TouchableHighlight
-                onPress={() => navigation.navigate('Index')}
+                onPress={inicioSesionBoton}
             >
                 <Text>Iniciar Sesion</Text>
             </TouchableHighlight>

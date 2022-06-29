@@ -2,8 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList } from 'react-native';
 import axios from 'axios';
-import ModalDropdown from 'react-native-modal-dropdown';
-import DropDown from '../components/DropDown';
+//import ModalDropdown from 'react-native-modal-dropdown';
 
 const Index = () => {
 
@@ -21,8 +20,8 @@ const Index = () => {
         <View>
             <Text>Lista de Profesores</Text>
             {/*input dropdown con las materias*/}
-            <ModalDropdown options={['Matematica', 'Lengua', 'Fisica']}>
-            </ModalDropdown>
+            {/*<ModalDropdown options={['Matematica', 'Lengua', 'Fisica']}>
+            </ModalDropdown>*/}
 
             <FlatList
             data = {profesores}
