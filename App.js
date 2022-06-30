@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, StyleSheet, Text, View, TouchableWithoutFeedback, TextInput } from 'react-native';
 import Main from './screens/Main.jsx';
 import LogIn from './screens/LogIn.jsx';
-import Index from './screens/Index.jsx';
+import Home from './screens/Home.jsx';
 //import React, { useState, useEffect } from 'react'; (flatlist, contactos-flatlist, main y backend)
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
@@ -16,7 +16,7 @@ export default function App() {
        <Stack.Navigator initialRouteName="Main">
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="LogIn" component={LogIn} />
-        <Stack.Screen name="Index" component={Index} />
+        <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );

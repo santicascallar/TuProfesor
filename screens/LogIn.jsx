@@ -1,12 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Alert, StyleSheet, Text, View, Image, TouchableHighlight, LogBox } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import axios from 'axios';
 
 const LogIn = () => {
 
+    const navigation = useNavigation();
+    
     const [_usuario, setUsuario] = useState('');
     const [_contrasena, setContraseña] = useState('');
 
@@ -21,7 +24,7 @@ const LogIn = () => {
         .then(data => {
             console.log(data)
             if(data.msj == 'hola'){
-                navigation.navigate('Index')
+                navigation.navigate('Home')
             }
         });
 
@@ -54,7 +57,7 @@ const LogIn = () => {
     return (
         <View>
             <Text>Tu Profesor</Text>
-            <CustomInput placeholder="Usuario" value={_usuario} setValue={setUsuario}/>
+            <CustomInput placeholder="Usuariooo" value={_usuario} setValue={setUsuario}/>
             <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_contrasena} setValue={setContraseña}/>
 
             <TouchableHighlight
