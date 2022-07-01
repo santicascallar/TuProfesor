@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
-import { NavigationContainer } from '@react-navigation/native';
+import BottomTab from '../components/BottomTab';
 
 const Main = () => {
 
@@ -17,6 +17,7 @@ const Main = () => {
                 >
                     <Text>Iniciar sesion como Alumno</Text>
                 </TouchableOpacity>
+                <BottomTab/>
         </View>
     )
 }
