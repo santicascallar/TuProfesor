@@ -10,15 +10,15 @@ const LogIn = () => {
 
     const navigation = useNavigation();
 
-    const [_usuario, setUsuario] = useState('');
-    const [_contrasena, setContraseña] = useState('');
+    const [_email, setUsuario] = useState('');
+    const [_password, setContraseña] = useState('');
 
     const inicioSesionBoton = () => {
-        console.log({_usuario,_contrasena})
+        console.log({_email,_password})
 
 
-        fetch("http://localhost:3000/login?usuario="+_usuario+"&contrasena="+_contrasena,
-        {method: 'POST',
+        fetch("http://localhost:3000/users/login?email="+_email+"&password="+_password,
+        {method: 'GET',
         redirect: 'follow'})
         .then(response => response.json())
         .then(data => {
@@ -46,8 +46,8 @@ const LogIn = () => {
     return (
         <View>
             <Text>Tu Profesor</Text>
-            <CustomInput placeholder="Usuariooo" value={_usuario} setValue={setUsuario}/>
-            <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_contrasena} setValue={setContraseña}/>
+            <CustomInput placeholder="Usuariooo" value={_email} setValue={setUsuario}/>
+            <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_password} setValue={setContraseña}/>
 
             <TouchableHighlight
                 onPress={inicioSesionBoton}

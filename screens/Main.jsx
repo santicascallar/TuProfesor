@@ -10,8 +10,8 @@ const Main = () => {
         <View>
             <Image 
                 style = {styles.logo}
-                source={require('../src/imgs/logo.png')}>
-            </Image>
+                source={require("../src/imgs/logo3.png")}/>
+            <Text>Tu Profesor</Text>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('LogIn')}
                 >
@@ -23,8 +23,11 @@ const Main = () => {
 
 const styles = StyleSheet.create({
     logo: {
-      width: 200,
-      height: 200,
+      width: 100,
+      height: 100,
+      marginTop: 10,
+      marginEnd: 10,
+
     },
   });
 
