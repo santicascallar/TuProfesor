@@ -9,7 +9,7 @@ import axios from 'axios';
 const LogIn = () => {
 
     const navigation = useNavigation();
-    
+
     const [_usuario, setUsuario] = useState('');
     const [_contrasena, setContraseña] = useState('');
 
@@ -27,17 +27,6 @@ const LogIn = () => {
                 navigation.navigate('Home')
             }
         });
-
-        /*axios.post("http://localhost:3000/login", {
-            usuario : _usuario,
-            contrasena : _contrasena
-
-        })
-        .then(res => {
-            console.log(res);
-            //setUsuario(res.data);
-            //setContraseña(res.data);
-        })*/
     }
 
     /*useEffect(() =>{

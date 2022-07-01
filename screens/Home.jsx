@@ -1,18 +1,18 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList } from 'react-native';
-import axios from 'axios';
-//import ModalDropdown from 'react-native-modal-dropdown';
+import DropDown from '../components/DropDown';
 
 const Home = () => {
 
     const [profesores, setProfesores] = useState([]);
 
-    fetch("http://localhost:3000/")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        setProfesores(response.data)
+    useEffect(() =>{
+        fetch("http://localhost:3000", {
+        method : 'GET'
+        })
+        .then(response => response.json())
+        .then(data => setProfesores(data.teachers));
     });
 
     /*useEffect(() =>{
@@ -21,14 +21,27 @@ const Home = () => {
             console.log(response.data);
             setProfesores(response.data);
         })
-    })*/
+    })
+    <FlatList 
+        data={profesores}
+        keyExtractor={({id}, index) => id}
+        renderItem={({item}) => (
+        <Text>
+            {item.nombre}
+        </Text>
+        )}
+    />*/
 
     return (
         <View>
-            <Text>Lista de Profesores</Text>
             {/*input dropdown con las materias*/}
-            {/*<ModalDropdown options={['Matematica', 'Lengua', 'Fisica']}>
-            </ModalDropdown>*/}
+            <DropDown/>
+            <Text>Lista de Profesores</Text>
+            <FlatList 
+                data={profesores}
+                keyExtractor={ (item) => item.id}
+                renderItem = {({item, index}) => <Text>{item.nombre}</Text>}
+            />
         </View>
     )
 }

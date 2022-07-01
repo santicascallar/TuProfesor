@@ -6,7 +6,6 @@ import { NavigationContainer } from '@react-navigation/native';
 const Main = () => {
 
     const navigation = useNavigation();
-
     return (
         <View>
             <Image 

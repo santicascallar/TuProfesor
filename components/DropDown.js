@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import {View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-
-let data = [
-
-]
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const DropDown = () => {
-    const [data, setData] = useState([])
-    return (
-        <View>
-            <TouchableOpacity style={styles.dropdown}>
-                <Text>Elige la materia</Text>
-            </TouchableOpacity>
-        </View>
-    )
+    
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+        {label: 'Matematica', value: 'matematica'},
+        {label: 'Lengua', value: 'lengua'}
+    ]);
+
+  return (
+    <View>
+        <DropDownPicker
+            open={open}
+            value={value}
+            items={items}
+            setOpen={setOpen}
+            setValue={setValue}
+            setItems={setItems}
+        />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

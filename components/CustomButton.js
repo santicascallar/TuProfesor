@@ -4,9 +4,9 @@ import {View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 const CustomButton = ({text}) => {
 
     return (
-            <Pressable style={styles.container}>
-                <Text style={styles.text}>{text}</Text>
-            </Pressable>
+        <Pressable style={styles.container}>
+            <Text style={styles.text}>{text}</Text>
+        </Pressable>
     )
 }
 
