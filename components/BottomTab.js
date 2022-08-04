@@ -3,14 +3,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 //screens
-import Home from "./screens/Home";
+import Main from "./screens/Main.jsx"
+import LogIn from "./screens/LogIn"
+import Home from "./screens/Home"
 
 const Tab = createBottomTabNavigator();
 
-const CustomTab = () => {
+function MyTabs(){
     return(
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={Home}/>
+            <Tab.Screen name="Main" component={Main}/>
         </Tab.Navigator>
     )
 }

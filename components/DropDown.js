@@ -28,7 +28,7 @@ const DropDown = () => {
 const styles = StyleSheet.create({
     dropdown: {
         backgroundColor: 'grey',
-        padding: 5,
+        padding: 8,
     },
 })
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
-import BottomTab from '../components/BottomTab';
+import { NavigationContainer } from '@react-navigation/native';
 
 const Main = () => {
 
@@ -10,25 +10,21 @@ const Main = () => {
         <View>
             <Image 
                 style = {styles.logo}
-                source={require("../src/imgs/logo3.png")}/>
-            <Text>Tu Profesor</Text>
+                source={require('../src/imgs/logo.png')}>
+            </Image>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('LogIn')}
                 >
                     <Text>Iniciar sesion como Alumno</Text>
                 </TouchableOpacity>
-                <BottomTab/>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     logo: {
-      width: 100,
-      height: 100,
-      marginTop: 10,
-      marginEnd: 10,
-
+      width: 200,
+      height: 200,
     },
   });
 
