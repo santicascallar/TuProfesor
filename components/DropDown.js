@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
+import ModalDropdown from 'react-native-modal-dropdown';
+import { useState } from 'react';
 
 const DropDown = () => {
     
@@ -9,19 +10,11 @@ const DropDown = () => {
     const [items, setItems] = useState([
         {label: 'Matematica', value: 'matematica'},
         {label: 'Lengua', value: 'lengua'}
-    ]);*/
+    ]);
+    */
   return (
     <View>
-        <DropDownPicker
-          items={[
-              {label: 'English', value: 'en'},
-              {label: 'Deutsch', value: 'de'},
-              {label: 'French', value: 'fr'},
-          ]}
-          defaultIndex={0}
-          dropdownStyle={{height: 40}}
-          onChangeItem={item => console.log(item.label, item.value)}
-      />  
+        <ModalDropdown options={['matematica', 'lengua']}/>
     </View>
   );
 }

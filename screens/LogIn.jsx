@@ -45,16 +45,10 @@ const LogIn = () => {
     return (
         <View>
             <Text>Tu Profesor</Text>
-            <CustomInput placeholder="Usuariooo" value={_email} setValue={setUsuario}/>
+            <CustomInput placeholder="Usuario" value={_email} setValue={setUsuario}/>
             <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_password} setValue={setContraseña}/>
 
-            <TouchableHighlight
-                onPress={inicioSesionBoton}
-            >
-                <Text>Iniciar Sesion</Text>
-            </TouchableHighlight>
-
-            {/*<CustomButton text="Iniciar Sesion"/>*/}
+            <CustomButton text="Iniciar Sesion" onPress={inicioSesionBoton}/>
             <CustomButton text="Todavia no tienes cuenta, registrate aqui"/>
         </View>
     )

@@ -14,7 +14,7 @@ const Home = () => {
         .then(response => response.json())
         .then(data => setProfesores(data));
     },[]);
-
+    
     /*useEffect(() =>{
         axios.get("https://localhost:5000/profesores")
         .then(response => {

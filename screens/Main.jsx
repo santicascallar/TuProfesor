@@ -10,10 +10,11 @@ const Main = () => {
     return (
         <View>
             <DropDown/>
-
+            
             <Image 
                 style = {styles.logo}
                 source={require("../src/imgs/logo3.png")}/>
+
             <Text>Tu Profesor</Text>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('LogIn')}
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
       height: 100,
       marginTop: 10,
       marginEnd: 10,
-
+      justifyContent: 'center'
     },
   });
 

@@ -8,7 +8,7 @@ const Home = () => {
     useEffect(() =>{
         fetch("http://localhost:3000/teachers", {
         method : 'GET',
-        //Authorization: "Bearer " + dsffdsfddsf
+        //Authorization: "Bearer " + dsffdsfddsf,  k
         })
         .then(response => response.json())
         .then(data => setProfesores(data));
