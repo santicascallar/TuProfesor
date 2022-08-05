@@ -1,7 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
-import DropDown from '../components/DropDown';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
@@ -26,19 +25,14 @@ const Home = () => {
 
     return (
         <View>
-            {/*input dropdown con las materias*/}
-            <DropDown/>
-            <Text>Lista de Profesores</Text>
-
-            {/*{profesores.map((obj =>(
-            <Text>{obj.nombre}</Text>
-            ))}
-            */}
+            <Text>Profesor {item.nombre}</Text>
     
             <FlatList
                 data={profesores}
                 keyExtractor={ (item) => item.id}
-                renderItem = {({item, index}) => <Text>{item.nombre} {item.apellido} {item.edad}</Text>}
+                renderItem = {({item, index}) => <Text>
+                    {item.nombre} {item.apellido} 
+                    {item.edad} {item.descripcion} {item.ubicacion} {item.tipo} {item.horario} {item.materia}</Text>}
             /> 
             
         </View>
