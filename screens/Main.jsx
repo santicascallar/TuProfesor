@@ -9,7 +9,9 @@ const Main = () => {
     const navigation = useNavigation();
     return (
         <View>
+
             <DropDown/>
+
             
             <Image 
                 style = {styles.logo}

@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import CustomButton from '../components/CustomButton';
 import DropDown from '../components/DropDown';
 
 const Home = () => {
@@ -14,31 +15,23 @@ const Home = () => {
         .then(response => response.json())
         .then(data => setProfesores(data));
     },[]);
-    
-    /*useEffect(() =>{
-        axios.get("https://localhost:5000/profesores")
-        .then(response => {
-            console.log(response.data);
-            setProfesores(response.data);
-        })
-    })
-    */
+
+    /*const verDetalles=(id, nombre, fecha) => {
+        navigation.navigate('Detalles',{id, nombre, fecha})
+    }*/
 
     return (
         <View>
-            {/*input dropdown con las materias*/}
-            <DropDown/>
             <Text>Lista de Profesores</Text>
-
-            {/*{profesores.map((obj =>(
-            <Text>{obj.nombre}</Text>
-            ))}
-            */}
     
             <FlatList
                 data={profesores}
                 keyExtractor={ (item) => item.id}
-                renderItem = {({item, index}) => <Text>{item.nombre} {item.apellido} {item.edad}</Text>}
+                renderItem = {({item, index}) => 
+                <Text>{item.nombre} {item.apellido} {item.edad}</Text>
+                //<CustomButton text={item.nombre}/>
+            }
+                showsVerticalScrollIndicator={false}
             /> 
             
         </View>
