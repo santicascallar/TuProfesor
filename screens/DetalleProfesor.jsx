@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
 
-const Home = () => {
+const DetalleProfesor = (props) => {
     const [profesores, setProfesores] = useState([]);
 
     useEffect(() =>{
@@ -39,4 +39,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default DetalleProfesor;

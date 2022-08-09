@@ -22,6 +22,9 @@ const Home = () => {
 
     return (
         <View>
+
+            <DropDown update={setProfesores}/>
+
             <Text>Lista de Profesores</Text>
     
             <FlatList

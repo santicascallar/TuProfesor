@@ -2,22 +2,27 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import SelectList from 'react-native-dropdown-select-list'
 
-const DropDown = () => {
+const DropDown = (props) => {
 
   const [selected, setSelected] = useState("");
-  const [data,setData] = useState([]);
+  const [materias,setMaterias] = useState([]);
   
   useEffect(() =>{
     fetch("http://localhost:3000/materias", {
     method : 'GET',
     })
-    .then((response) => {
+    .then((response) => 
         // Store Values in Temporary Array
-        let newArray = response.data.map((item) => {
-            return {key: item.id, value: item.name}
-          })
-          //Set Data Variable
-          setData(newArray)
+        
+          response.json()
+    ).then((data)=> {
+      console.log(data)
+      let newArray = data.map((item) => {
+        return {key: item.id, value: item.nombre}
+      })
+      console.log(newArray)
+      //Set Data Variable
+      setMaterias(newArray)
     })
     .catch((e) => {
         console.log(e)
@@ -25,7 +30,21 @@ const DropDown = () => {
 },[]);
 
   return(
-    <SelectList setSelected={setSelected} data={data} onSelect={() => alert(selected)} />
+    <SelectList setSelected={setSelected} data={materias} onSelect={() => {
+      
+      alert(selected)
+      fetch("http://localhost:3000/teachers?idMateria="+selected, {
+        method : 'GET',
+        //Authorization: "Bearer " + dsffdsfddsf
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          props.update(data)
+    
+        });
+
+      }} />
   )
 }
 

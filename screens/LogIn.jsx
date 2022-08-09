@@ -22,7 +22,7 @@ const LogIn = () => {
         .then(data => {
             console.log(data)
             if(data.msj == 'hola'){
-                navigation.navigate('Home')
+                navigation.navigate('Home') //pasar params navigation: navigation.navigate('Detalelprofesor', {})
             }
         });
     }
