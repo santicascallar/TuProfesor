@@ -25,3 +25,8 @@ export default function App() {
     </NavigationContainer>
   );
 }
+/*https://www.youtube.com/playlist?list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ
+
+https://reactnativeelements.com/docs/1.2.0/avatar
+
+https://es.quish.tv/most-popular-react-native-card-components */
