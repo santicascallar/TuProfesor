@@ -7,12 +7,19 @@ import Home from "../screens/Home";
 const Tab = createBottomTabNavigator();
 
 const CustomTab = () => {
-    return(
+    return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home}/>
         </Tab.Navigator>
     )
 }
 
-export default CustomTab;
+//export default CustomTab;
 
+export default function App() {
+  return (
+    <NavigationContainer>
+      <CustomTab />
+    </NavigationContainer>
+  );
+}
