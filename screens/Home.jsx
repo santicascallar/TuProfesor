@@ -10,14 +10,13 @@ const Home = () => {
     const [profesores, setProfesores] = useState([]);
 
     useEffect(() =>{
-        fetch("http://localhost:3000/teachers", {
+        fetch("https://tuprofesorbackend.herokuapp.com/teachers", {
         method : 'GET',
         //Authorization: "Bearer " + dsffdsfddsf
         })
         .then(response => response.json())
         .then(data => setProfesores(data));
     },[]);
-
     /*const verDetalles=(id, nombre, fecha) => {
         navigation.navigate('Detalles',{id, nombre, fecha})
     }*/

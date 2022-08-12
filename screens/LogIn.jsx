@@ -16,15 +16,16 @@ const LogIn = () => {
     const inicioSesionBoton = () => {
         console.log({_email,_password})
 
-        fetch("http://localhost:3000/login?email="+_email+"&password="+_password,
-        {method: 'GET',
+        fetch("https://tuprofesorbackend.herokuapp.com/users/login",
+        {method: 'POST',
+        body:[_email,_password],
         redirect: 'follow'})
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            if(data.msj == 'hola'){
+            //if(data.msj == 'hola'){
                 navigation.navigate('Home') //pasar params navigation: navigation.navigate('Detalelprofesor', {})
-            }
+            //}
         });
     }
 
@@ -35,12 +36,6 @@ const LogIn = () => {
             <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_password} setValue={setContraseña}/>
 
             <CustomButton text={'Iniciar sesion'} onPress={inicioSesionBoton}/>
-
-            <TouchableHighlight
-                onPress={inicioSesionBoton}
-            >
-                <Text>Iniciar Sesion</Text>
-            </TouchableHighlight>
             
             <CustomButton text="Todavia no tienes cuenta, registrate aqui"/>
         </View>

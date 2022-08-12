@@ -6,7 +6,7 @@ const DetalleProfesor = (props) => {
     const [profesores, setProfesores] = useState([]);
 
     useEffect(() =>{
-        fetch("http://localhost:3000/teachers", {
+        fetch("https://tuprofesorbackend.herokuapp.com/teachers/", {
         method : 'GET',
         })
         .then(response => response.json())
@@ -21,8 +21,7 @@ const DetalleProfesor = (props) => {
                 data={profesores}
                 keyExtractor={ (item) => item.id}
                 renderItem = {({item, index}) => <Text>
-                    {item.nombre} {item.apellido} 
-                    {item.edad} {item.descripcion} {item.ubicacion} {item.tipo} {item.horario} {item.materia}</Text>}
+                    {item.nombre} {item.apellido} {item.ubicacion} {item.materia}</Text>}
             /> 
             
         </View>
