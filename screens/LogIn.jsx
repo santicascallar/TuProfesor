@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Alert, StyleSheet, Text, View, Image, TouchableHighlight, LogBox } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
+import CustomLogo from '../components/CustomLogo';
 
 const LogIn = () => {
 
@@ -27,25 +28,13 @@ const LogIn = () => {
         });
     }
 
-    /*useEffect(() =>{
-        axios.post("https://localhost:5000/users/LogIn", {
-            usuario : _usuario,
-            contrasena : _contrasena
-
-        })
-        .then(res => {
-            console.log(res.status);
-            setUsuario(res.data);
-            setContraseña(res.data);
-        })
-    })
-*/
-
     return (
         <View>
-            <Text>Tu Profesor</Text>
+            <CustomLogo/>
             <CustomInput placeholder="Usuario" value={_email} setValue={setUsuario}/>
             <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_password} setValue={setContraseña}/>
+
+            <CustomButton text={'Iniciar sesion'} onPress={inicioSesionBoton}/>
 
             <TouchableHighlight
                 onPress={inicioSesionBoton}

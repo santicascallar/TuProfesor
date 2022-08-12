@@ -15,16 +15,21 @@ const CustomTab = () => {
         </Tab.Navigator>
     )
 }
+export default CustomTab;
+
+/*export default function App() {
+=======
 
 //export default CustomTab;
 
 export default function App() {
+>>>>>>> ba314d3e818e501daab167fdc63537c326a21a2b
   return (
     <NavigationContainer>
       <CustomTab />
     </NavigationContainer>
   );
-}
+}*/
 /*https://www.youtube.com/playlist?list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ
 
 https://reactnativeelements.com/docs/1.2.0/avatar

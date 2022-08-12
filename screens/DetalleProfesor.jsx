@@ -8,24 +8,14 @@ const DetalleProfesor = (props) => {
     useEffect(() =>{
         fetch("http://localhost:3000/teachers", {
         method : 'GET',
-        //Authorization: "Bearer " + dsffdsfddsf,  k
         })
         .then(response => response.json())
         .then(data => setProfesores(data));
     },[]);
 
-    /*useEffect(() =>{
-        axios.get("https://localhost:5000/profesores")
-        .then(response => {
-            console.log(response.data);
-            setProfesores(response.data);
-        })
-    })
-    */
-
     return (
         <View>
-            <Text>Profesor {item.nombre}</Text>
+            <Text>Profesor:</Text>
     
             <FlatList
                 data={profesores}

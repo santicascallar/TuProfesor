@@ -1,35 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
-import BottomTab from '../components/BottomTab';
-import DropDown from '../components/DropDown';
+import CustomButton from '../components/CustomButton';
+import CustomLogo from '../components/CustomLogo';
 
 const Main = () => {
 
     const navigation = useNavigation();
     return (
-        <View>
+        <View style = {styles.container}>
+            <CustomLogo/>
             <Image 
                 style = {styles.logo}
                 source={require("../src/imgs/logo3.png")}/>
 
             <Text>Tu Profesor</Text>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('LogIn')}
-                >
-                    <Text>Iniciar sesion como Alumno</Text>
-                </TouchableOpacity>
+
+            <CustomButton text={'Iniciar sesion como Alumno'} onPress={() => navigation.navigate('LogIn')}/>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    logo: {
-      width: 100,
-      height: 100,
-      marginTop: 10,
-      marginEnd: 10,
-      justifyContent: 'center'
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
     },
   });
 

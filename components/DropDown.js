@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import SelectList from 'react-native-dropdown-select-list'
+import { StyleSheet } from 'react-native';
 
 const DropDown = (props) => {
 
@@ -48,6 +49,11 @@ const DropDown = (props) => {
   )
 }
 
+const styles = StyleSheet.create({
+  dropdown: {
+      
+    },
+})
 /*const styles = StyleSheet.create({
   dropdown: {
       flex: 1,

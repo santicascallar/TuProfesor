@@ -1,14 +1,15 @@
 import React from "react";
 import {View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 
-const CustomButton = ({text}) => {
-
+export default function CustomButton(props) {
+    const { onPress, text } = props;
     return (
-        <Pressable style={styles.container}>
-            <Text style={styles.text}>{text}</Text>
-        </Pressable>
-    )
-}
+      <Pressable style={styles.container} onPress={onPress}>
+        <Text style={styles.text}>{text}</Text>
+      </Pressable>
+    );
+  }
+  
 
 const styles = StyleSheet.create({
     container: {
@@ -23,5 +24,3 @@ const styles = StyleSheet.create({
         color: 'white',
     }
 })
-
-export default CustomButton;
