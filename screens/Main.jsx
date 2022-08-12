@@ -10,10 +10,6 @@ const Main = () => {
     return (
         <View style = {styles.container}>
             <CustomLogo/>
-            <Image 
-                style = {styles.logo}
-                source={require("../src/imgs/logo3.png")}/>
-
             <Text>Tu Profesor</Text>
 
             <CustomButton text={'Iniciar sesion como Alumno'} onPress={() => navigation.navigate('LogIn')}/>

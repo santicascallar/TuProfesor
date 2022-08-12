@@ -6,11 +6,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Main from "./screens/Main.jsx";
 import LogIn from "./screens/LogIn";
 import Home from "./screens/Home";
+import DetalleProfesor from "./screens/DetalleProfesor";
 
 const MainStackNavigator = createNativeStackNavigator();
 
 function MyStack(){
     return(
+        <NavigationContainer>
         <MainStackNavigator.Navigator
             initialRouteName="Main"
         >
@@ -26,7 +28,12 @@ function MyStack(){
                 name="Home"
                 component={Home}
             />
+            <MainStackNavigator.Screen
+                name="DetalleProfesor"
+                component={DetalleProfesor}
+            />
         </MainStackNavigator.Navigator>
+        </NavigationContainer>
     );
 }
 

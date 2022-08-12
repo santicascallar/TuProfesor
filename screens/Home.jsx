@@ -5,37 +5,37 @@ import CustomButton from '../components/CustomButton';
 import DropDown from '../components/DropDown';
 import CustomLogo from '../components/CustomLogo';
 import DetalleProfesor from './DetalleProfesor';
+import ProfesoresList from '../components/ProfesoresList';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
 
     useEffect(() =>{
-        fetch("https://tuprofesorbackend.herokuapp.com/teachers", {
+        fetch("http://localhost:3000/teachers", {
         method : 'GET',
         //Authorization: "Bearer " + dsffdsfddsf
         })
         .then(response => response.json())
         .then(data => setProfesores(data));
     },[]);
-    /*const verDetalles=(id, nombre, fecha) => {
-        navigation.navigate('Detalles',{id, nombre, fecha})
-    }*/
 
     return (
         <View>
             <CustomLogo/>
-
             <DropDown update={setProfesores}/>
 
             <Text>Lista de Profesores</Text>
+
+            {/*<FlatList
+                data={edificio}
+                renderItem={({ item }) => <EdificiosListItem key={item.direccion} edificio={item} />}
+                 keyExtractor={item => item.direccion}
+            />*/}
     
             <FlatList
                 data={profesores}
                 keyExtractor={ (item) => item.id}
-                renderItem = {({item, index}) => 
-                <Text>{item.nombre} {item.apellido} {item.edad}</Text>
-
-                //<CustomButton text={item.nombre}/>
+                renderItem = {({item}) => <ProfesoresList key={item.id} profesores={item} />
             }
                 showsVerticalScrollIndicator={false}
             /> 
