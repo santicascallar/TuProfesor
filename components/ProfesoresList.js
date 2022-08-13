@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function ProfesoresList ({profesores}){
-    //console.log(edificio.Direccion)
     const navigation = useNavigation()
     return (
     
@@ -13,7 +12,7 @@ export default function ProfesoresList ({profesores}){
         
     <View>
         <Text style={styles.lista} >
-            {profesores.nombre}
+            {profesores.nombre} - {profesores.apellido} - {profesores.edad}
         </Text>
     </View>
 

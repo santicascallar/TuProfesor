@@ -6,7 +6,7 @@ const DetalleProfesor = (props) => {
     const [profesores, setProfesores] = useState([]);
 
     useEffect(() =>{
-        fetch("https://tuprofesorbackend.herokuapp.com/teachers/", {
+        fetch("http://localhost:3000/teachers", { //sería /teachers/id:props
         method : 'GET',
         })
         .then(response => response.json())

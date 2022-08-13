@@ -4,7 +4,6 @@ import {StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
 import CustomButton from '../components/CustomButton';
 import DropDown from '../components/DropDown';
 import CustomLogo from '../components/CustomLogo';
-import DetalleProfesor from './DetalleProfesor';
 import ProfesoresList from '../components/ProfesoresList';
 
 const Home = () => {
