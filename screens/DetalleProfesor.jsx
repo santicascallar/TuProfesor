@@ -23,6 +23,8 @@ const DetalleProfesor = (props) => {
                 renderItem = {({item, index}) => <Text>
                     {item.nombre} {item.apellido} {item.ubicacion} {item.materia}</Text>}
             /> 
+
+            {/*Hacer boton de reservar clase y mandarlo a otra screen*/}
             
         </View>
     );
