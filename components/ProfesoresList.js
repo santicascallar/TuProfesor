@@ -7,7 +7,7 @@ export default function ProfesoresList ({profesores}){
     return (
     
     <TouchableOpacity onPress={ () =>{
-        navigation.navigate('DetalleProfesor')
+        navigation.navigate('DetalleProfesor', {id: profesores.id})
       }}>
         
     <View>
@@ -24,14 +24,13 @@ export default function ProfesoresList ({profesores}){
 const styles = StyleSheet.create({
     lista: {
         color:'white',
-        justifyContent:'center',
         fontFamily: 'Kanit-Regular',
         borderWidth: 1,
         borderColor: "lightblue",
         padding: 10,
-        backgroundColor: "#5207f2",
+        backgroundColor: "#169DFF",
         marginTop: 15,
         marginBottom: -5,
-        width: 250
+        width: 350,
     }
-    });
+});

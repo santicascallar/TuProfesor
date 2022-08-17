@@ -31,7 +31,7 @@ const LogIn = () => {
 
     return (
         <View>
-            <CustomLogo/>
+            <CustomLogo onPress={() => navigation.navigate('Main')}/>
             <CustomInput placeholder="Usuario" value={_email} setValue={setUsuario}/>
             <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_password} setValue={setContraseña}/>
 

@@ -13,10 +13,11 @@ export default function CustomButton(props) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'blue',
+        backgroundColor: '#169DFF',
         width: '100',
         padding: 15,
         marginVertical: 5,
+        borderRadius: 20, 
         alignItems: 'center', //cambiar
     },
     text: {

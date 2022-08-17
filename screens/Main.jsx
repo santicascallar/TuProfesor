@@ -7,9 +7,10 @@ import CustomLogo from '../components/CustomLogo';
 const Main = () => {
 
     const navigation = useNavigation();
+
     return (
         <View style = {styles.container}>
-            <CustomLogo/>
+            <CustomLogo onPress={() => navigation.navigate('Main')}/>
             <Text>Tu Profesor</Text>
 
             <CustomButton text={'Iniciar sesion como Alumno'} onPress={() => navigation.navigate('LogIn')}/>
