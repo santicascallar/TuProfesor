@@ -10,7 +10,7 @@ const DetalleProfesor = (props) => {
     const navigation = useNavigation();
 
     useEffect(() =>{
-        fetch("http://localhost:3000/teachers/id/"+ props.route.params.id, { //seria /teachers/id:props
+        fetch("https://tuprofesorbackend.herokuapp.com/teachers/id/"+ props.route.params.id, { //seria /teachers/id:props
         method : 'GET',
         })
         .then(response => response.json())

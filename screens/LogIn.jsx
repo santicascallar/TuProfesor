@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
@@ -9,37 +9,53 @@ import CustomLogo from '../components/CustomLogo';
 const LogIn = () => {
 
     const navigation = useNavigation();
-
-    const [_email, setUsuario] = useState('');
-    const [_password, setContraseña] = useState('');
+    const [userState, setUserState] = useState({
+        email: '',
+        password: '',
+    });
 
     const inicioSesionBoton = () => {
-        console.log({_email,_password})
-
-        fetch("http://localhost:3000/login",
+        console.log(JSON.stringify(userState));
+        fetch("https://tuprofesorbackend.herokuapp.com/users/login",
         {method: 'POST',
-        body:[_email,_password],
-        redirect: 'follow'})
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+        body: JSON.stringify(userState)})
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            if(data.msj == 'hola'){
+            if(data.token){
                 navigation.navigate('Home') //pasar params navigation: navigation.navigate('Detalelprofesor', {})
             }
-        });
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             <CustomLogo onPress={() => navigation.navigate('Main')}/>
-            <CustomInput placeholder="Usuario" value={_email} setValue={setUsuario}/>
-            <CustomInput placeholder="Contraseña" seguridadPassword={true} value={_password} setValue={setContraseña}/>
-
-            <CustomButton text={'Iniciar sesion'} onPress={inicioSesionBoton}/>
+            <TextInput placeholder="Usuario" value={userState.email} onChangeText={text => setUserState({ ...userState, email: text })}/>
+            <TextInput placeholder="Contraseña" value={userState.password} secureTextEntry={true} onChangeText={text => setUserState({ ...userState, password: text })}/>
             
-            <CustomButton text="Todavia no tienes cuenta, registrate aqui"/>
+
+            <CustomButton text={'Iniciar sesion'}  onPress={() => navigation.navigate('Home')}/*onPress={inicioSesionBoton}/*//>
+            
+            <CustomButton text="Todavia no tienes cuenta, registrate aqui" onPress={() => navigation.navigate('Register')}/>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex:1
+    }
+  });
 
 export default LogIn;

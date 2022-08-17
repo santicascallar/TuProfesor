@@ -9,7 +9,8 @@ const DropDown = (props) => {
   const [materias,setMaterias] = useState([]);
   
   useEffect(() =>{
-    fetch("http://localhost:3000/materias", {
+    fetch("https://tuprofesorbackend.herokuapp.com/teachers/materias", {
+      mode:'no-cors',
     method : 'GET',
     })
     .then((response) => 

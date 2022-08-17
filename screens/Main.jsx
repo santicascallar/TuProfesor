@@ -13,7 +13,8 @@ const Main = () => {
             <CustomLogo onPress={() => navigation.navigate('Main')}/>
             <Text>Tu Profesor</Text>
 
-            <CustomButton text={'Iniciar sesion como Alumno'} onPress={() => navigation.navigate('LogIn')}/>
+            <CustomButton text={'Iniciar sesion'} onPress={() => navigation.navigate('LogIn')}/>
+            <CustomButton text={' Registrarse  '} onPress={() => navigation.navigate('Register')}/>
         </View>
     )
 }
@@ -22,7 +23,8 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-    },
+        flex:1
+    }
   });
 
 export default Main;

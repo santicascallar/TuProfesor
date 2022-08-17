@@ -9,7 +9,8 @@ const Home = () => {
     const [profesores, setProfesores] = useState([]);
 
     useEffect(() =>{
-        fetch("http://localhost:3000/teachers", {
+        fetch("https://tuprofesorbackend.herokuapp.com/teachers", {
+        mode:'no-cors',
         method : 'GET',
         //Authorization: "Bearer " + dsffdsfddsf
         })
@@ -19,7 +20,6 @@ const Home = () => {
 
     return (
         <View>
-            <CustomLogo onPress={() => navigation.navigate('Main')}/>
             <DropDown update={setProfesores}/>
 
             <Text>Lista de Profesores</Text>
@@ -46,8 +46,8 @@ const Home = () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        justifyContent: 'center',
-    },
+        justifyContent: 'center'
+    }
 });
 
 export default Home;
