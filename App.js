@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, StyleSheet, Text, View, TouchableWithoutFeedback, TextInput } from 'react-native';
-//import React, { useState, useEffect } from 'react'; (flatlist, contactos-flatlist, main y backend)
-import MyStack from './navigation.js';
+//import React, { useState, useEffect } from 'react'; (flatlist, contactos-flatlist, main y backend);
+import MyStack from './src/Navigation/navigation';
 
 export default function App() {
   return (
