@@ -11,10 +11,12 @@ const Main = () => {
     return (
         <View style = {styles.container}>
             <CustomLogo onPress={() => navigation.navigate('Main')}/>
-            <Text>Tu Profesor</Text>
+            <Text>Iniciar Sesion como</Text>
 
-            <CustomButton text={'Iniciar sesion'} onPress={() => navigation.navigate('LogIn')}/>
-            <CustomButton text={'Registrarse'} onPress={() => navigation.navigate('Register')}/>
+            <CustomButton text={'Profesor'} onPress={() => navigation.navigate('LogIn')}/>
+            <CustomButton text={'Alumno'} onPress/>
+
+            <CustomButton text={'¿No tienes cuenta? Regístrate'} onPress={() => navigation.navigate('Register')}/>
         </View>
     )
 }

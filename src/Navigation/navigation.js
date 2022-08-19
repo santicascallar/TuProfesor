@@ -9,6 +9,9 @@ import LogIn from "../screens/LogIn";
 import Home from "../screens/Home";
 import DetalleProfesor from "../screens/DetalleProfesor";
 import ReservarClase from "../screens/ReservarClase";
+import Register from "../screens/Register";
+import RegisterAlumno from "../screens/RegisterAlumno";
+import RegisterProfesor from "../screens/RegisterProfesor";
 
 function LogoTitle() {
     return (
@@ -46,9 +49,7 @@ function MyStack(){
                 name="Home"
                 component={Home}
                 options={{ 
-                    headerTitle: LogoTitle, 
-                    headerStyle: {backgroundColor: '#169DFF'},
-                    headerBackVisible: false    
+                   headerShown: false
                 }}
             />
             <MainStackNavigator.Screen
@@ -62,6 +63,30 @@ function MyStack(){
             <MainStackNavigator.Screen
                 name="ReservarClase"
                 component={ReservarClase}
+                options={{ 
+                    headerTitle: LogoTitle, 
+                    headerStyle: { backgroundColor: '#169DFF' }    
+                }}
+            />
+            <MainStackNavigator.Screen
+                name="Register"
+                component={Register}
+                options={{ 
+                    headerTitle: LogoTitle, 
+                    headerStyle: { backgroundColor: '#169DFF' }    
+                }}
+            />
+            <MainStackNavigator.Screen
+                name="RegisterAlumno"
+                component={RegisterAlumno}
+                options={{ 
+                    headerTitle: LogoTitle, 
+                    headerStyle: { backgroundColor: '#169DFF' }    
+                }}
+            />
+            <MainStackNavigator.Screen
+                name="RegisterProfesor"
+                component={RegisterProfesor}
                 options={{ 
                     headerTitle: LogoTitle, 
                     headerStyle: { backgroundColor: '#169DFF' }    

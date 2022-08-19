@@ -9,6 +9,7 @@ import { GetProfesor } from '../Services/TuProfesorService';
 const DetalleProfesor = (props) => {
     const [profesores, setProfesores] = useState([]);
     const navigation = useNavigation();
+    
     useEffect(() =>{
         GetProfesor(props.route.params.id).then(data => setProfesores(data));
     },[]);
