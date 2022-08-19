@@ -14,7 +14,7 @@ const Main = () => {
             <Text>Tu Profesor</Text>
 
             <CustomButton text={'Iniciar sesion'} onPress={() => navigation.navigate('LogIn')}/>
-            <CustomButton text={' Registrarse  '} onPress={() => navigation.navigate('Register')}/>
+            <CustomButton text={'Registrarse'} onPress={() => navigation.navigate('Register')}/>
         </View>
     )
 }

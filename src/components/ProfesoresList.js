@@ -7,12 +7,12 @@ export default function ProfesoresList ({profesores}){
     return (
     
     <TouchableOpacity onPress={ () =>{
-        navigation.navigate('DetalleProfesor', {id: profesores.id})
+        navigation.navigate('DetalleProfesor', {id:profesores.id})
       }}>
         
     <View>
         <Text style={styles.lista} >
-            {profesores.nombre} - {profesores.apellido} - {profesores.edad}
+            {profesores.nombre} {profesores.apellido} {profesores.ubicacion}
         </Text>
     </View>
 

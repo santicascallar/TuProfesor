@@ -9,7 +9,6 @@ import { GetProfesor } from '../Services/TuProfesorService';
 const DetalleProfesor = (props) => {
     const [profesores, setProfesores] = useState([]);
     const navigation = useNavigation();
-
     useEffect(() =>{
         GetProfesor(props.route.params.id).then(data => setProfesores(data));
     },[]);
@@ -24,8 +23,13 @@ const DetalleProfesor = (props) => {
                 renderItem = {({item, index}) => (
     
                 <View>
-                <Text>{item.nombre} {item.apellido} {item.ubicacion} {item.materia}</Text>
-                    <CustomButton text={"Reservar Clase"} onPress={() => navigation.navigate('ReservarClase')}/>
+                <Text>
+                    {item.nombre} {item.apellido} 
+                    {item.ubicacion} {item.disponibilidad}
+                </Text>
+                    <CustomButton text={"Reservar Clase"} onPress={() => navigation.navigate('ReservarClase', {
+                        id: item.id,
+                    })}/>
                 </View>
                 
                 )}
