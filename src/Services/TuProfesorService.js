@@ -2,6 +2,22 @@ import axiosClient from "./TuProfesorClient";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const register = async (userState) => {
+  console.log(userState);
+  axiosClient
+  .post(`/users/register`, {
+    email: 'Fred',
+    password: 'Flintstone',
+    tipo: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+ };
+
+/*export const register = async (userState) => {
     console.log(userState);
     axiosClient
       .post(`/users/register`, {
@@ -14,7 +30,7 @@ export const register = async (userState) => {
         console.log(`register error`, e.response);
       });
    };
-
+*/
   //
   //    REGISTER
   //
@@ -54,11 +70,10 @@ export const register = async (userState) => {
     
     return axiosClient
       .get(`/teachers`/*, {
-        headers: {'Authorization': 'Bearer ' + tokenId}
-      }*/).then((res) => { // si status code entre 200 y 299
+        headers: {'Authorization': 'Bearer ' + tokenId}}*/)
+      .then((res) => { // si status code entre 200 y 299
 
         const profesores = res.data;
-        
         return profesores;
       })
       .catch((err) => { // status >= 300

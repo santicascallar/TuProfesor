@@ -23,11 +23,12 @@ const RegisterAlumno = () => {
         <View style = {styles.container}>
             <CustomLogo onPress={() => navigation.navigate('Main')}/>
             <Text>Registrarse como Alumno</Text>
-            <Text>Para buscar y reservar clases particulares con los multiples profesores que se encuentran en la pagina.</Text>
+            <Text>Para buscar y reservar clases particulares con los multiples 
+                profesores que se encuentran en la pagina.</Text>
 
-            <CustomInput placeholder="Correo Electronico" value={userState.email} setValue={setUserState.email}/>
-            <CustomInput placeholder="Contraseña" seguridadPassword={true} value={userState.password} setValue={setUserState.password}/>
-            <CustomInput placeholder="Repetir Contraseña" seguridadPassword={true} value={userState.password} setValue={setUserState.password}/>
+            <CustomInput placeholder="Correo Electronico" setValue={setUserState.email}/>
+            <CustomInput placeholder="Contraseña" seguridadPassword={true} setValue={setUserState.password}/>
+            <CustomInput placeholder="Repetir Contraseña" seguridadPassword={true} setValue={setUserState.password}/>
 
             <CustomButton text={'Registrarse'} onPress={() => navigation.navigate('Main')}/>
         </View>
