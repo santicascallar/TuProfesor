@@ -15,18 +15,21 @@ const DropDown = (props) => {
     GetMaterias().then((data) => setMaterias(data))
     .catch((err) => {
       console.log(err)
-    })}
-    )
+    })},[])
+
 
 
   return(
     <SelectList setSelected={setSelected} data={materias} onSelect={() => {
       alert(selected)
-      GetProfesorByMateria(selected.value).then(res => {
-        props.setProfesor(res);
+      /*
+      GetProfesorByMateria(selected).then(res => {
+        props.update(res);
       }).catch(err => {
         console.log(err);
       })
+      */
+     props.update(selected)
     } } />
   )
 }

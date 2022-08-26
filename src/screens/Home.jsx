@@ -5,6 +5,7 @@ import DropDown from '../components/DropDown';
 import CustomLogo from '../components/CustomLogo';
 import ProfesoresList from '../components/ProfesoresList';
 import { GetProfesores } from '../Services/TuProfesorService';
+import { GetProfesorByMateria } from '../Services/TuProfesorService';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
@@ -13,10 +14,18 @@ const Home = () => {
         GetProfesores().then(data => setProfesores(data));
     } ,[]);
 
+    setearProf(materia) [
+        GetProfesorByMateria(selected).then(res => {
+            setProfesores(res);
+          }).catch(err => {
+            console.log(err);
+          })
+    ]
 
     return (
         <View>
-            <DropDown update={setProfesores}/>
+            <DropDown update={setearProf} 
+            profesores={profesores}/>
 
             <Text>Lista de Profesores</Text>
 

@@ -1,13 +1,35 @@
 import axiosClient from "./TuProfesorClient";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const register = async (userState) => {
+export const ProfesorRegister = async (userState) => {
   console.log(userState);
   axiosClient
-  .post(`/users/register`, {
-    email: 'Fred',
-    password: 'Flintstone',
-    tipo: 'Flintstone'
+  .post(`/teachers/register`, {
+      email: userState.email,
+      password: userState.password,
+      nombre: userState.nombre,
+      apellido: userState.apellido,
+      ubicacion: userState.ubicacion,
+      telefono: userState.telefono,
+      borndate: userState.borndate,
+      disponibilidad: userState.disponibilidad,
+      tipo: userState.tipo,
+      activo:0
+  })
+  .then((response) => {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+ };
+
+ export const AlumnoRegister = async (userState) => {
+  console.log(userState);
+  axiosClient
+  .post(`/students/register`, {
+    email: userState.email,
+    password: userState.password,
   })
   .then(function (response) {
     console.log(response);
@@ -34,12 +56,36 @@ export const register = async (userState) => {
   //
   //    REGISTER
   //
-
-  export const login = async (userState) => {
+  export const Profesorlogin = async (userState) => {
     
     console.log(userState);
     return axiosClient
-      .post(`/users/login`, 
+      .post(`/teachers/login`, 
+      {...userState})
+      .then(async(res) => {
+        console.log(res.data);
+        console.log(res.data.length);
+        if(res.data.length === 1){
+          let userToken = res.data.token; // poner punto (nombe que viene del back)
+          let userId = res.data.id
+          const idValue = JSON.stringify(userId) // lo pasa a string
+          await AsyncStorage.setItem('token', userToken) // guarda en el storage con el nombre token 
+          await AsyncStorage.setItem('id', idValue) // guarda en el storage con el nombre id
+        } else {
+          console.log("no entro")
+        } 
+      })
+      .catch(() => {
+        console.log(`login error`);
+      });
+
+   };
+
+  export const Alumnologin = async (userState) => {
+    
+    console.log(userState);
+    return axiosClient
+      .post(`/students/login`, 
       {...userState})
       .then(async(res) => {
         console.log(res.data);
@@ -92,12 +138,14 @@ export const register = async (userState) => {
         return axiosClient
             .get(`/teachers/materias`/*, {
             headers: {'Authorization': 'Bearer ' + tokenId}
-            }*/).then((res) => { // si status code entre 200 y 299
+            }*/)
+            .then((res) => { // si status code entre 200 y 299
             console.log(res.data);
             const materias = res.data;
-            
             return materias
-            })
+            
+          
+          })
             .catch((err) => { // status >= 300
             console.log(`error `, err.response);
             throw err //propagar error

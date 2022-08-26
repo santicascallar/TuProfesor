@@ -13,8 +13,8 @@ const Main = () => {
             <CustomLogo onPress={() => navigation.navigate('Main')}/>
             <Text>Iniciar Sesion como</Text>
 
-            <CustomButton text={'Profesor'} onPress={() => navigation.navigate('LogIn')}/>
-            <CustomButton text={'Alumno'} onPress/>
+            <CustomButton text={'Profesor'} onPress={() => navigation.navigate('LogInProfesor')}/>
+            <CustomButton text={'Alumno'} onPress={() => navigation.navigate('LogInAlumno')}/>
 
             <CustomButton text={'¿No tienes cuenta? Regístrate'} onPress={() => navigation.navigate('Register')}/>
         </View>
