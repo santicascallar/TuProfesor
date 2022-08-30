@@ -14,8 +14,8 @@ const Home = () => {
         GetProfesores().then(data => setProfesores(data));
     } ,[]);
 
-    setearProf(materia) [
-        GetProfesorByMateria(selected).then(res => {
+    const setearProf = () => [
+        GetProfesorByMateria(materia).then(res => {
             setProfesores(res);
           }).catch(err => {
             console.log(err);

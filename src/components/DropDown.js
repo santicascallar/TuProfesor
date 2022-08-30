@@ -17,8 +17,6 @@ const DropDown = (props) => {
       console.log(err)
     })},[])
 
-
-
   return(
     <SelectList setSelected={setSelected} data={materias} onSelect={() => {
       alert(selected)
