@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import CustomCard from './CustomCard';
+import { GetMaterias } from '../Services/TuProfesorService';
+import { useEffect } from 'react';
 
 export default function ProfesoresList ({profesores}){
     const navigation = useNavigation()
+
+    /*const [materias, setMaterias] = useState([]);
+
+    useEffect(() =>{
+        GetMaterias().then((data) => setMaterias(data))
+        .catch((err) => {
+          console.log(err)
+    })},[])
+    */
+
     return (
     
     <TouchableOpacity onPress={ () =>{
@@ -11,13 +24,20 @@ export default function ProfesoresList ({profesores}){
       }}>
         
     <View>
-        <Text style={styles.lista} >
+        <CustomCard
+        textNombre = {profesores.nombre}
+        textApellido = {profesores.apellido}
+        //textMateria = {materias.Materia}
+        textEdad = {profesores.borndate}
+        textUbicacion = {profesores.ubicacion}
+        />
+
+        {/*<Text style={styles.lista} >
             {profesores.nombre} {profesores.apellido} {profesores.ubicacion}
-        </Text>
+        </Text>*/}
     </View>
 
     </TouchableOpacity>
-        
     )
 }
 

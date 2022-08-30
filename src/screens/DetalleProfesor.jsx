@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import { Text, View, FlatList, ScrollView } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from '../components/CustomButton';
 import { GetProfesor } from '../Services/TuProfesorService';

@@ -120,6 +120,7 @@ export const ProfesorRegister = async (userState) => {
       .then((res) => { // si status code entre 200 y 299
 
         const profesores = res.data;
+        console.log(res.data);
         return profesores;
       })
       .catch((err) => { // status >= 300

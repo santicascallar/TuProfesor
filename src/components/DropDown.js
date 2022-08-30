@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import SelectList from 'react-native-dropdown-select-list'
 import { StyleSheet } from 'react-native';
 import { GetMaterias } from '../Services/TuProfesorService';
-import { GetProfesorByMateria } from '../Services/TuProfesorService';
 
 const DropDown = (props) => {
 

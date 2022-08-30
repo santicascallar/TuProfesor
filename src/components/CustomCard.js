@@ -3,19 +3,20 @@ import {Text, StyleSheet, Pressable, View } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function CustomCard(props) {
-    const {textNombre, textApellido, textMateria, textEdad, img } = props;
+    const {textNombre, textApellido, textMateria, textEdad, textUbicacion, img } = props;
     return (
       <SafeAreaView>
-        <View style={{flexDirection: 'row'}}>
+        {/*<View style={{flexDirection: 'row'}}>
             <Image
                 source={{uri: img}}
                 style={styles.imagen}
             />
-        </View>
-        <View>
+        </View>*/}
+        <View style={styles.container}>
             <Text style={{fontSize: 22, fontWeight: '700'}}>{textNombre} {textApellido}</Text>
             <Text style={{fontSize: 15, opacity: .7}}>{textMateria}</Text>
             <Text style={{fontSize: 15, opacity: .7}}>{textEdad} Años</Text>
+            <Text style={{fontSize: 15, opacity: .7}}>{textUbicacion}</Text>
         </View>
       </SafeAreaView>
     );
@@ -25,9 +26,10 @@ export default function CustomCard(props) {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
+        marginTop: 20,
         padding: 20,
         marginBottom: 20,
-        borderRadius: 16,
+        borderRadius: 36,
         backgroundColor: 'rgba(255,255,255,0.8)',
         shadowColor: "#000",
         shadowOffset: {
