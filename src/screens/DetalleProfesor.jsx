@@ -13,7 +13,7 @@ const DetalleProfesor = (props) => {
     useEffect(() =>{
         GetProfesor(props.route.params.id).then(data => setProfesores(data));
     },[]);
-
+    
     return (
         <View>
             <Text>Profesor:</Text>

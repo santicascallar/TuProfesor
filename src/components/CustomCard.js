@@ -2,7 +2,7 @@ import React from "react";
 import {Text, StyleSheet, Pressable, View } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function CustomButton(props) {
+export default function CustomCard(props) {
     const {textNombre, textApellido, textMateria, textEdad, img } = props;
     return (
       <SafeAreaView>
