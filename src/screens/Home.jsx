@@ -5,14 +5,27 @@ import DropDown from '../components/DropDown';
 import CustomLogo from '../components/CustomLogo';
 import ProfesoresList from '../components/ProfesoresList';
 import { GetProfesores } from '../Services/TuProfesorService';
-import { GetProfesorByMateria } from '../Services/TuProfesorService';
+import { GetProfesorByMateria, GetMaterias } from '../Services/TuProfesorService';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
+    const [materias, setMaterias] = useState([]);
 
     useEffect(() =>{
         GetProfesores().then(data => setProfesores(data));
+        GetMaterias().then(data => {
+            setMaterias(data.map(item => {
+                return {
+                    key: item.id,
+                    value: item.Materia
+                }
+            }))
+            console.log({dataMaterias: data})
+            console.log(materias)
+          
+          });
     } ,[]);
+
 
     const setearProf = () => [
         GetProfesorByMateria(materia).then(res => {
@@ -24,8 +37,7 @@ const Home = () => {
 
     return (
         <View>
-            <DropDown update={setearProf} 
-            profesores={profesores}/>
+            <DropDown data={materias}/>
 
             <Text>Lista de Profesores</Text>
 

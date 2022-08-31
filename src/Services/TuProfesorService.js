@@ -118,12 +118,14 @@ export const ProfesorRegister = async (userState) => {
       .get(`/teachers`/*, {
         headers: {'Authorization': 'Bearer ' + tokenId}}*/)
       .then((res) => { // si status code entre 200 y 299
-
+        console.log("si")
         const profesores = res.data;
-        console.log(res.data);
+        console.log({
+          profesores: res.data});
         return profesores;
       })
       .catch((err) => { // status >= 300
+        console.log('no')
         console.log(`error `, err.response);
         throw err //propagar error
       }); // => Promise<AxiosResponse>
@@ -135,17 +137,15 @@ export const ProfesorRegister = async (userState) => {
 
     export const GetMaterias = async () => {
         const tokenId = await AsyncStorage.getItem('token')
-
         return axiosClient
             .get(`/teachers/materias`/*, {
             headers: {'Authorization': 'Bearer ' + tokenId}
             }*/)
             .then((res) => { // si status code entre 200 y 299
-            console.log(res.data);
-            const materias = res.data;
-            return materias
-            
-          
+            console.log({materias: res.data});
+            return res.data
+            //const materias = res.data;
+            //return materias
           })
             .catch((err) => { // status >= 300
             console.log(`error `, err.response);

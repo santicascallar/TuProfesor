@@ -27,7 +27,7 @@ export default function ProfesoresList ({profesores}){
         <CustomCard
         textNombre = {profesores.nombre}
         textApellido = {profesores.apellido}
-        //textMateria = {materias.Materia}
+        //textMateria = {profesores.materias.Materia}
         textEdad = {profesores.borndate}
         textUbicacion = {profesores.ubicacion}
         />

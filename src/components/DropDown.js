@@ -2,22 +2,14 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import SelectList from 'react-native-dropdown-select-list'
 import { StyleSheet } from 'react-native';
-import { GetMaterias } from '../Services/TuProfesorService';
+
 
 const DropDown = (props) => {
 
   const [selected, setSelected] = useState("");
-  const [materias,setMaterias] = useState([]);
-  
-
-  useEffect(() =>{
-    GetMaterias().then((data) => setMaterias(data))
-    .catch((err) => {
-      console.log(err)
-    })},[])
-
+  console.log(props.data)
   return(
-    <SelectList setSelected={setSelected} data={materias} onSelect={() => {
+    <SelectList setSelected={setSelected} data={props.data} onSelect={() => {
       alert(selected)
       /*
       GetProfesorByMateria(selected).then(res => {
