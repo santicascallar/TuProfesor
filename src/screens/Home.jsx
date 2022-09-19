@@ -13,6 +13,7 @@ const Home = () => {
 
     useEffect(() =>{
         GetProfesores().then(data => setProfesores(data));
+        
         GetMaterias().then(data => {
             setMaterias(data.map(item => {
                 return {
@@ -25,7 +26,6 @@ const Home = () => {
           
           });
     } ,[]);
-
 
     const setearProf = () => [
         GetProfesorByMateria(materia).then(res => {

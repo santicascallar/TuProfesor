@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import SelectList from 'react-native-dropdown-select-list'
 import { StyleSheet } from 'react-native';
 
-
 const DropDown = (props) => {
 
   const [selected, setSelected] = useState("");
@@ -23,9 +22,7 @@ const DropDown = (props) => {
   )
 }
 
-
-
-/*const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   dropdown: {
       flex: 1,
       justifyContent: 'center',
@@ -33,6 +30,6 @@ const DropDown = (props) => {
       backgroundColor: '#ecf0f1',
       padding: 8,
     },
-})*/
+});
 
 export default DropDown;

@@ -13,7 +13,6 @@ const LogInAlumno = () => {
         password: '',
     });
 
-
     const inicioSesionBoton = async () => {
       if (!userState.email || !userState.password) {
         console.log("No se puede iniciar sesión sin email o contraseña");

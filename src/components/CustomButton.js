@@ -17,8 +17,7 @@ const styles = StyleSheet.create({
         width: '100',
         padding: 15,
         marginVertical: 5,
-        borderRadius: 20, 
-        alignItems: 'center', //cambiar
+        borderRadius: 20,
     },
     text: {
         fontWeight: 'bold',
