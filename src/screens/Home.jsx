@@ -6,6 +6,7 @@ import CustomLogo from '../components/CustomLogo';
 import ProfesoresList from '../components/ProfesoresList';
 import { GetProfesores } from '../Services/TuProfesorService';
 import { GetProfesorByMateria, GetMaterias } from '../Services/TuProfesorService';
+import Checkbox from 'react-native-modest-checkbox';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
@@ -39,7 +40,11 @@ const Home = () => {
         <View>
             <DropDown data={materias}/>
 
-            <Text>Lista de Profesores</Text>
+            <Checkbox
+                label='Text for checkbox'
+                onChange={(checked) => console.log('Checked!')}
+            />
+
 
             {/*<FlatList
                 data={edificio}

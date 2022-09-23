@@ -28,8 +28,12 @@ export const ProfesorRegister = async (userState) => {
   console.log(userState);
   axiosClient
   .post(`/students/register`, {
-    email: userState.email,
-    password: userState.password,
+      email: userState.email,
+      password: userState.password,
+      nombre: userState.nombre,
+      apellido: userState.apellido,
+      ubicacion: userState.ubicacion,
+      telefono: userState.telefono,
   })
   .then(function (response) {
     console.log(response);

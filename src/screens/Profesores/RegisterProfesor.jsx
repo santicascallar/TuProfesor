@@ -27,7 +27,7 @@ const RegisterProfesor = () => {
             console.log("Llenar todos los datos");
           } else {
                 await ProfesorRegister(userState).then(() => {
-                navigation.navigate('Home');  
+                navigation.navigate('Home');
               });
           }
         }

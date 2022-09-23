@@ -24,7 +24,7 @@ const RegisterAlumno = () => {
             console.log("Llenar todos los datos");
           } else {
                 await AlumnoRegister(userState).then(() => {
-                navigation.navigate('Main');
+                navigation.navigate('Home');
               });
           }
         }
@@ -35,12 +35,12 @@ const RegisterAlumno = () => {
             <Text>Registrarse como Alumno</Text>
             <Text>Para buscar y reservar clases particulares con los multiples profesores que se encuentran en la pagina.</Text>
 
-            <TextInput style = {styles.input} placeholder="Correo Electronico" setValue={setUserState.email}/>
-            <TextInput style = {styles.input} placeholder="Contraseña" seguridadPassword={true} setValue={setUserState.password}/>
-            <TextInput style = {styles.input} placeholder="Nombre" setValue={setUserState.nombre}/>
-            <TextInput style = {styles.input} placeholder="Apellido" setValue={setUserState.apellido}/>
-            <TextInput style = {styles.input} placeholder="Telefono" setValue={setUserState.telefono}/>
-            <TextInput style = {styles.input} placeholder="Ubicacion" setValue={setUserState.ubicacion}/>
+            <TextInput style = {styles.input} placeholder="Correo Electronico" value={userState.email} onChangeText={text => setUserState({ ...userState, email: text })}/>
+            <TextInput style = {styles.input} placeholder="Contraseña" seguridadPassword={true} value={userState.password} onChangeText={text => setUserState({ ...userState, password: text })}/>
+            <TextInput style = {styles.input} placeholder="Nombre" value={userState.nombre} onChangeText={text => setUserState({ ...userState, nombre: text })}/>
+            <TextInput style = {styles.input} placeholder="Apellido" value={userState.apellido} onChangeText={text => setUserState({ ...userState, apellido: text })}/>
+            <TextInput style = {styles.input} placeholder="Telefono" value={userState.telefono} onChangeText={text => setUserState({ ...userState, telefono: text })}/>
+            <TextInput style = {styles.input} placeholder="Ubicacion" value={userState.ubicacion} onChangeText={text => setUserState({ ...userState, ubicacion: text })}/>
 
             <CustomButton text={'Registrarse'} onPress={RegisterBoton}/>
         </View>
