@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import CustomButton from '../components/CustomButton';
 import CustomLogo from '../components/CustomLogo';
 import { TextInput } from 'react-native-paper';
+import { ClaseReservar } from '../Services/TuProfesorService';
 
 const ReservarClase = ({route}) => {
 
@@ -17,9 +18,9 @@ const ReservarClase = ({route}) => {
     
     const ReservarBoton = async () => {
         if (!userState.horario || !userState.detalles) {
-          console.log("No se puede iniciar sesión sin email o contraseña");
+          console.log("error");
         } else {
-        await Reser(userState).then(() => {
+        await ClaseReservar(userState).then(() => {
               navigation.navigate('Home');  
           });
         }

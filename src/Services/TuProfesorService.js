@@ -95,7 +95,7 @@ export const ProfesorRegister = async (userState) => {
       .then(async(res) => {
         console.log(res.data);
         console.log(res.data.length);
-        if(res.data.length === 1){
+        if(res.data.length){
           let userToken = res.data.token; // poner punto (nombe que viene del back)
           let userId = res.data.id
           const idValue = JSON.stringify(userId) // lo pasa a string
@@ -207,7 +207,7 @@ export const ProfesorRegister = async (userState) => {
     //    GET PROFESOR BY MATERIA
     //
 
-    export const ReservarClase = async (peticion) => {
+    export const ClaseReservar = async (peticion) => {
         const tokenId = await AsyncStorage.getItem('token')
         const id = await AsyncStorage.getItem('id')
 
@@ -217,7 +217,6 @@ export const ProfesorRegister = async (userState) => {
             }*/).then((res) => { // si status code entre 200 y 299
     
             const profesor = res.data;
-            
             return profesor
             })
             .catch((err) => { // status >= 300

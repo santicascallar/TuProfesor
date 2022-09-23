@@ -18,7 +18,6 @@ const RegisterAlumno = () => {
         telefono:'',
     });   
     
-    
         const RegisterBoton = async () => {
           if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.telefono || !userState.ubicacion) {
             console.log("Llenar todos los datos");
@@ -33,7 +32,7 @@ const RegisterAlumno = () => {
         <View style = {styles.container}>
             <CustomLogo onPress={() => navigation.navigate('Main')}/>
             <Text>Registrarse como Alumno</Text>
-            <Text>Para buscar y reservar clases particulares con los multiples profesores que se encuentran en la pagina.</Text>
+            <Text>Para buscar y reservar clases particulares con los multiples profesores que se encuentran en la pagina</Text>
 
             <TextInput style = {styles.input} placeholder="Correo Electronico" value={userState.email} onChangeText={text => setUserState({ ...userState, email: text })}/>
             <TextInput style = {styles.input} placeholder="Contraseña" seguridadPassword={true} value={userState.password} onChangeText={text => setUserState({ ...userState, password: text })}/>
