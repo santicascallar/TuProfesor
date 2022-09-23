@@ -24,10 +24,10 @@ const DetalleProfesor = (props) => {
     
                 <View>
                 <Text style={styles.title}>{item.nombre} {item.apellido} </Text>
-                <Text style={styles.text}> Ubicación: {item.ubicacion} </Text>
-                <Text style={styles.text}> Telefono: {item.telefono}</Text>
                 <Text style={styles.text}> Email: {item.email}</Text>
                 <Text style={styles.text}> Fecha de Nacimiento: {item.borndate}</Text>
+                <Text style={styles.text}> Telefono: {item.telefono}</Text>
+                <Text style={styles.text}> Ubicación: {item.ubicacion} </Text>
 
                 <View style={styles.container}>
                     <CustomButton text={"Reservar Clase"} onPress={() => navigation.navigate('ReservarClase', {

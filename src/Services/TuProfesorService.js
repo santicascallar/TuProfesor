@@ -9,12 +9,12 @@ export const ProfesorRegister = async (userState) => {
       password: userState.password,
       nombre: userState.nombre,
       apellido: userState.apellido,
+      borndate: userState.borndate,
       ubicacion: userState.ubicacion,
       telefono: userState.telefono,
-      borndate: userState.borndate,
+      activo:1, 
       disponibilidad: userState.disponibilidad,
       tipo: userState.tipo,
-      activo:0
   })
   .then((response) => {
     console.log(response);
@@ -69,13 +69,14 @@ export const ProfesorRegister = async (userState) => {
       .then(async(res) => {
         console.log(res.data);
         console.log(res.data.length);
-        if(res.data.length === 1){
+        if(res.data.length){
           let userToken = res.data.token; // poner punto (nombe que viene del back)
           let userId = res.data.id
           const idValue = JSON.stringify(userId) // lo pasa a string
           await AsyncStorage.setItem('token', userToken) // guarda en el storage con el nombre token 
           await AsyncStorage.setItem('id', idValue) // guarda en el storage con el nombre id
-        } else {
+        }
+        else {
           console.log("no entro")
         } 
       })
@@ -100,7 +101,8 @@ export const ProfesorRegister = async (userState) => {
           const idValue = JSON.stringify(userId) // lo pasa a string
           await AsyncStorage.setItem('token', userToken) // guarda en el storage con el nombre token 
           await AsyncStorage.setItem('id', idValue) // guarda en el storage con el nombre id
-        } else {
+        } 
+        else {
           console.log("no entro")
         } 
       })

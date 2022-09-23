@@ -6,11 +6,12 @@ import CustomLogo from '../components/CustomLogo';
 import ProfesoresList from '../components/ProfesoresList';
 import { GetProfesores } from '../Services/TuProfesorService';
 import { GetProfesorByMateria, GetMaterias } from '../Services/TuProfesorService';
-import Checkbox from 'react-native-modest-checkbox';
+import { Checkbox } from 'react-native-paper';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
     const [materias, setMaterias] = useState([]);
+    const [checked, setChecked] = useState(false);
 
     useEffect(() =>{
         GetProfesores().then(data => setProfesores(data));
@@ -28,7 +29,10 @@ const Home = () => {
           });
     } ,[]);
 
-    const setearProf = () => [
+    const presencialOnline = () => {
+    }
+
+    const setearProf = (materia) => [
         GetProfesorByMateria(materia).then(res => {
             setProfesores(res);
           }).catch(err => {
@@ -38,13 +42,25 @@ const Home = () => {
 
     return (
         <View>
-            <DropDown data={materias}/>
-
+            <DropDown data={materias} update={setearProf}/>
+            
+            <View style={styles.container}>
+            <Text>Presencial</Text>
             <Checkbox
-                label='Text for checkbox'
-                onChange={(checked) => console.log('Checked!')}
+                status={checked ? 'checked' : 'unchecked'}
+                onPress={() => {
+                setChecked(!checked);
+                }}
             />
 
+            <Text>Virtual</Text>
+            <Checkbox
+                status={checked ? 'checked' : 'unchecked'}
+                onPress={() => {
+                setChecked(!checked);
+                }}
+            />
+            </View>
 
             {/*<FlatList
                 data={edificio}

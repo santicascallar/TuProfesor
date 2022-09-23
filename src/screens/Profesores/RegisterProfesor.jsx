@@ -14,11 +14,12 @@ const RegisterProfesor = () => {
         password: '',
         nombre:'',
         apellido:'',
+        borndate:'1985-04-04T00:00:00.000Z',
         ubicacion:'',
-        telefono:'11324652343',
-        borndate:'20/08/2004',
-        disponibilidad:'20/08/2004',
-        tipo:'1'
+        telefono:'222222226',
+        activo: '1',
+        disponibilidad:'2021-08-09T10:58:48.000Z',
+        tipo:'1',
     });   
     
     

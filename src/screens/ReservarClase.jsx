@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from '../components/CustomButton';
 import CustomLogo from '../components/CustomLogo';
+import { TextInput } from 'react-native-paper';
 
 const ReservarClase = ({route}) => {
 
@@ -30,18 +31,15 @@ const ReservarClase = ({route}) => {
             <CustomLogo/>
             <Text>Reserva tu clase</Text>
 
-            <CustomInput placeholder="Usuario" value={userState.horario} onChangeText={text => setUserState({ ...userState, horario:Date })}/>
-
-
-           <CustomInput placeholder="Usuario" value={userState.detalles} onChangeText={text => setUserState({ ...userState, detalles: text })}/>
+            <TextInput style={styles.input}placeholder="Horario" value={userState.horario} onChangeText={text => setUserState({ ...userState, horario: text })}/>
+            <TextInput style={styles.input}placeholder="Detalles" value={userState.detalles} onChangeText={text => setUserState({ ...userState, detalles: text })}/>
 
             <Text>
                 Una vez reservada la clase tendras que esperar la confirmacion por parte del profesor. 
-                Una vez confirmada, por mail, se te enviara un link donde podran ir a un chat para organizar 
-                de forma facil el encuentro.
+                Una vez confirmada, por mail, se te enviara un link donde podran ir a un chat para organizar de forma facil el encuentro.
             </Text>
 
-            <CustomButton text={'Reservar'} onPress={() => navigation.navigate('')}/>
+            <CustomButton text={'Reservar'} onPress={ReservarBoton}/>
         </View>
     )
 }

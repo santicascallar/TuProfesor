@@ -19,7 +19,7 @@ const LogInProfesor = () => {
         console.log("No se puede iniciar sesión sin email o contraseña");
       } else {
           await Profesorlogin(userState).then(() => {
-            navigation.navigate('');  
+            navigation.navigate('Home');
         });
       }
     }
