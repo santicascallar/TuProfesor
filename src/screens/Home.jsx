@@ -7,12 +7,16 @@ import ProfesoresList from '../components/ProfesoresList';
 import { GetProfesores } from '../Services/TuProfesorService';
 import { GetProfesorByMateria, GetMaterias } from '../Services/TuProfesorService';
 import { Checkbox } from 'react-native-paper';
+import { useContextState } from '../../contextState';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
     const [materias, setMaterias] = useState([]);
+    
     const [checkedPresencial, setCheckedPresencial] = useState(false);
     const [checkedVirtual, setCheckedVirtual] = useState(false);
+
+    const {contextState, setContextState}= useContextState();
 
     useEffect(() =>{
         GetProfesores().then(data => setProfesores(data));
@@ -30,8 +34,15 @@ const Home = () => {
           });
     } ,[]);
 
-    const presencialOnline = () => {
-    }
+    useEffect(() => {
+        if(!contextState.token){ 
+          console.log('No hay token');
+          navigation.navigate("LogIn")  //Si no hay token en el contexto, te manda a la pantalla de login
+        }
+        else{
+          console.log("HAY TOKEN")
+        }
+    })
 
     const setearProf = (materia) => [
         GetProfesorByMateria(materia).then(res => {

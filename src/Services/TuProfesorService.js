@@ -4,7 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const getVerificacion = async (userState) => {  
   return axiosClient
       .post(`/teachers/login`,{
-        ...userState
+        email: userState.email,
+        password: userState.password,
       })
       .then((res) => {
         console.log(res.data.token)
@@ -135,7 +136,7 @@ export const ProfesorRegister = async (userState) => {
     const id = await AsyncStorage.getItem('id')
     
     return axiosClient
-      .get(`/teachers`/*, {
+      .get(`/teachers/activos`/*, {
         headers: {'Authorization': 'Bearer ' + tokenId}}*/)
       .then((res) => { // si status code entre 200 y 299
         console.log("si")

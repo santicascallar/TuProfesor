@@ -10,7 +10,7 @@ import { StyleSheet } from 'react-native-web';
 const DetalleProfesor = (props) => {
     const [profesores, setProfesores] = useState([]);
     const navigation = useNavigation();
-    
+
     useEffect(() =>{
         GetProfesor(props.route.params.id).then(data => setProfesores(data));
     },[]);
