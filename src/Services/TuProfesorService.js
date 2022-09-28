@@ -1,6 +1,20 @@
 import axiosClient from "./TuProfesorClient";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+export const getVerificacion = async (userState) => {  
+  return axiosClient
+      .post(`/teachers/login`,{
+        ...userState
+      })
+      .then((res) => {
+        console.log(res.data.token)
+        return res.data.token
+      })
+      .catch((e) => {
+        throw "Error 401"
+      });
+};
+
 export const ProfesorRegister = async (userState) => {
   console.log(userState);
   axiosClient

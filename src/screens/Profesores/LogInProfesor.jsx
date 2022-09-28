@@ -5,6 +5,9 @@ import { useNavigation } from "@react-navigation/native";
 import CustomButton from '../../components/CustomButton';
 import CustomLogo from '../../components/CustomLogo';
 import { Profesorlogin } from '../../Services/TuProfesorService';
+import { getVerificacion } from '../../Services/TuProfesorService';
+import { useContextState } from '../../../contextState';
+import { ActionTypes } from '../../../contextState';
 
 const LogInProfesor = () => {
     const navigation = useNavigation();
@@ -12,6 +15,30 @@ const LogInProfesor = () => {
         email: '',
         password: '',
     });
+
+    const { contextState, setContextState } = useContextState();
+
+    const verificacion = async (event) => {
+      //event.preventDefault()
+      if (!userState.email || !userState.password) {
+        console.log("No se han ingresado los valores")
+      }
+      else {
+         getVerificacion(userState)
+          .then((res) => {
+            setContextState({
+              type:ActionTypes.SetToken,
+              value: res
+            })
+            console.log("ok")
+            navigation.navigate('Home')
+          })
+          .catch(() => {
+            Alert.alert("Su clave no esta autorizada")
+            console.log("aca")
+          });
+      }
+    }
 
 
     const inicioSesionBoton = async () => {
@@ -28,11 +55,23 @@ const LogInProfesor = () => {
         <View style={styles.container}>
             <CustomLogo onPress={() => navigation.navigate('Main')}/>
             <Text>Inicio de sesion Profesor</Text>
-            <TextInput style={styles.input}placeholder="Usuario" value={userState.email} onChangeText={text => setUserState({ ...userState, email: text })}/>
-            <TextInput style={styles.input} placeholder="Contraseña" value={userState.password} secureTextEntry={true} onChangeText={text => setUserState({ ...userState, password: text })}/>
-            
 
-            <CustomButton text={'Iniciar sesion'} onPress={inicioSesionBoton}/>
+            <TextInput 
+            style={styles.input}
+            placeholder="Usuario" 
+            value={userState.email} 
+            onChangeText={text => setUserState({ ...userState, email: text })}
+            />
+
+            <TextInput 
+            style={styles.input} 
+            placeholder="Contraseña" 
+            value={userState.password} 
+            secureTextEntry={true}
+            onChangeText={text => setUserState({ ...userState, password: text })}
+            />
+
+            <CustomButton text={'Iniciar sesion'} onPress={(e) => verificacion()}/>
             
             <CustomButton text="Todavia no tienes cuenta, registrate aqui" onPress={() => navigation.navigate('Register')}/>
         </View>

@@ -11,7 +11,8 @@ import { Checkbox } from 'react-native-paper';
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
     const [materias, setMaterias] = useState([]);
-    const [checked, setChecked] = useState(false);
+    const [checkedPresencial, setCheckedPresencial] = useState(false);
+    const [checkedVirtual, setCheckedVirtual] = useState(false);
 
     useEffect(() =>{
         GetProfesores().then(data => setProfesores(data));
@@ -47,17 +48,17 @@ const Home = () => {
             <View style={styles.container}>
             <Text>Presencial</Text>
             <Checkbox
-                status={checked ? 'checked' : 'unchecked'}
+                status={checkedPresencial ? 'checked' : 'unchecked'}
                 onPress={() => {
-                setChecked(!checked);
+                    setCheckedPresencial(!checkedPresencial);
                 }}
             />
 
             <Text>Virtual</Text>
             <Checkbox
-                status={checked ? 'checked' : 'unchecked'}
+                status={checkedVirtual ? 'checked' : 'unchecked'}
                 onPress={() => {
-                setChecked(!checked);
+                    setCheckedVirtual(!checkedVirtual);
                 }}
             />
             </View>
