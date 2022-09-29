@@ -75,7 +75,7 @@ export const ProfesorRegister = async (userState) => {
   //
   //    REGISTER
   //
-  export const Profesorlogin = async (userState) => {
+  /*export const Profesorlogin = async (userState) => {
     
     console.log(userState);
     return axiosClient
@@ -100,6 +100,7 @@ export const ProfesorRegister = async (userState) => {
       });
 
    };
+   */
 
   export const Alumnologin = async (userState) => {
     
@@ -240,4 +241,26 @@ export const ProfesorRegister = async (userState) => {
         }); // => Promise<AxiosResponse>
     }
 
-  
+    export const GetProfesoresByTipo = async (userState) => {
+      const tokenId = await AsyncStorage.getItem('token')
+      const id = await AsyncStorage.getItem('id')
+      
+      return axiosClient
+        .get(`/teachers/activos`,{
+          tipo: userState.tipo,
+        })
+        /*, {
+          headers: {'Authorization': 'Bearer ' + tokenId}}*/
+        .then((res) => { // si status code entre 200 y 299
+          console.log("si")
+          const profesores = res.data;
+          console.log({
+            profesores: res.data});
+          return profesores;
+        })
+        .catch((err) => { // status >= 300
+          console.log('no')
+          console.log(`error `, err.response);
+          throw err //propagar error
+        }); // => Promise<AxiosResponse>
+     };

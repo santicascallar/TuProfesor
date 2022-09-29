@@ -24,7 +24,7 @@ const RegisterProfesor = () => {
     
     
         const RegisterBoton = async () => {
-          if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.disponibilidad || !userState.tipo) {
+          if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.disponibilidad || !userState.tipo || !userState.activo) {
             console.log("Llenar todos los datos");
           } else {
                 await ProfesorRegister(userState).then(() => {
@@ -32,6 +32,7 @@ const RegisterProfesor = () => {
               });
           }
         }
+
     return (
         <View style = {styles.container}>
             <CustomLogo onPress={() => navigation.navigate('Main')}/>

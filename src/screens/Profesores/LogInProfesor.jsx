@@ -71,7 +71,7 @@ const LogInProfesor = () => {
             onChangeText={text => setUserState({ ...userState, password: text })}
             />
 
-            <CustomButton text={'Iniciar sesion'} onPress={(e) => verificacion()}/>
+            <CustomButton text={'Iniciar sesion'} onPress={verificacion}/>
             
             <CustomButton text="Todavia no tienes cuenta, registrate aqui" onPress={() => navigation.navigate('Register')}/>
         </View>
