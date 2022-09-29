@@ -5,7 +5,7 @@ import { ContextProvider } from './contextState.js';
 export default function App() {
   return (
     <ContextProvider>
-      <MyStack/>
+      <MyStack/> 
     </ContextProvider>
   );
 }

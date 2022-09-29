@@ -10,15 +10,15 @@ const RegisterProfesor = () => {
 
     const navigation = useNavigation();
     const [userState, setUserState] = useState({
-        email: '',
-        password: '',
-        nombre:'',
-        apellido:'',
-        borndate:'1985-04-04T00:00:00.000Z',
-        ubicacion:'',
-        telefono:'222222226',
-        disponibilidad:'2021-08-09T10:58:48.000Z',
-        tipo:'1'
+      borndate:"2022-08-09",
+      disponibilidad:"2022-08-09 10:58:48",
+      email:"",
+      password:"",
+      nombre:"",
+      apellido:"",
+      tipo:"",
+      telefono:"",
+      ubicacion:""
     });   
     
     
@@ -27,7 +27,7 @@ const RegisterProfesor = () => {
             console.log("Llenar todos los datos");
           } else {
                 await ProfesorRegister(userState).then(() => {
-                navigation.navigate('Home');
+                navigation.navigate('Main');
               });
           }
         }

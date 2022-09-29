@@ -20,21 +20,13 @@ export const ProfesorRegister = async (userState) => {
   console.log(userState);
   axiosClient
   .post(`/teachers/register`, {
-      email: userState.email,
-      password: userState.password,
-      nombre: userState.nombre,
-      apellido: userState.apellido,
-      borndate: userState.borndate,
-      ubicacion: userState.ubicacion,
-      telefono: userState.telefono,
-      activo:1, 
-      disponibilidad: userState.disponibilidad,
-      tipo: userState.tipo,
+      ...userState
   })
   .then((response) => {
     console.log(response);
+    return response;
   })
-  .catch(function (error) {
+  .catch((error) => {
     console.log(error);
   });
  };
@@ -230,26 +222,19 @@ export const ProfesorRegister = async (userState) => {
         }); // => Promise<AxiosResponse>
     }
 
-    export const GetProfesoresByTipo = async (userState) => {
+    export const GetProfesorByTipo = async (tipo) => {
       const tokenId = await AsyncStorage.getItem('token')
-      const id = await AsyncStorage.getItem('id')
       
       return axiosClient
-        .get(`/teachers/activos`,{
-          tipo: userState.tipo,
-        })
-        /*, {
-          headers: {'Authorization': 'Bearer ' + tokenId}}*/
-        .then((res) => { // si status code entre 200 y 299
-          console.log("si")
-          const profesores = res.data;
-          console.log({
-            profesores: res.data});
-          return profesores;
-        })
-        .catch((err) => { // status >= 300
-          console.log('no')
+          .get(`/teachers?tipo=${tipo}`/*, {
+          headers: {'Authorization': 'Bearer ' + tokenId}
+          }*/).then((res) => { // si status code entre 200 y 299
+  
+          const profesor = res.data;
+          return profesor
+          })
+          .catch((err) => { // status >= 300
           console.log(`error `, err.response);
           throw err //propagar error
-        }); // => Promise<AxiosResponse>
-     };
+      }); // => Promise<AxiosResponse>
+  };

@@ -1,18 +1,18 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
+import {StyleSheet, Text, View, FlatList, ScrollView, CheckBox } from 'react-native';
 import DropDown from '../components/DropDown';
 import CustomLogo from '../components/CustomLogo';
 import ProfesoresList from '../components/ProfesoresList';
 import { GetProfesores } from '../Services/TuProfesorService';
+import { GetProfesorByTipo } from '../Services/TuProfesorService';
 import { GetProfesorByMateria, GetMaterias } from '../Services/TuProfesorService';
-import { Checkbox } from 'react-native-paper';
+//import { Checkbox } from 'react-native-paper';
 import { useContextState } from '../../contextState';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
     const [materias, setMaterias] = useState([]);
-    
     const [checkedPresencial, setCheckedPresencial] = useState(false);
     const [checkedVirtual, setCheckedVirtual] = useState(false);
 
@@ -34,7 +34,7 @@ const Home = () => {
           });
     } ,[]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         if(!contextState.token){ 
           console.log('No hay token');
           navigation.navigate("LogIn")  //Si no hay token en el contexto, te manda a la pantalla de login
@@ -42,7 +42,7 @@ const Home = () => {
         else{
           console.log("HAY TOKEN")
         }
-    })
+    })*/
 
     const setearProf = (materia) => [
         GetProfesorByMateria(materia).then(res => {
@@ -52,25 +52,31 @@ const Home = () => {
           })
     ]
 
+    const presencial = async () => {
+        setCheckedPresencial();
+        GetProfesorByTipo(1).then(res => {
+            setProfesores(res);
+        }).catch(err => {
+            console.log(err);
+        })
+        console.log("presencial");
+    }
+
     return (
         <View>
             <DropDown data={materias} update={setearProf}/>
             
             <View style={styles.container}>
             <Text>Presencial</Text>
-            <Checkbox
-                status={checkedPresencial ? 'checked' : 'unchecked'}
-                onPress={() => {
-                    setCheckedPresencial(!checkedPresencial);
-                }}
+            <CheckBox
+                value={checkedPresencial}
+                onValueChange={presencial}
             />
 
             <Text>Virtual</Text>
-            <Checkbox
-                status={checkedVirtual ? 'checked' : 'unchecked'}
-                onPress={() => {
-                    setCheckedVirtual(!checkedVirtual);
-                }}
+            <CheckBox
+                value={checkedVirtual}
+                onValueChange={setCheckedVirtual}
             />
             </View>
 

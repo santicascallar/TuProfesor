@@ -10,12 +10,12 @@ import { AlumnoRegister } from '../../Services/TuProfesorService';
 const RegisterAlumno = () => {
     const navigation = useNavigation();
     const [userState, setUserState] = useState({
-        email: '',
-        password: '',
-        nombre:'',
-        apellido:'',
-        ubicacion:'',
-        telefono:'',
+        email:"",
+        password: "",
+        nombre:"",
+        apellido:"",
+        ubicacion:"",
+        telefono:"",
     });   
     
         const RegisterBoton = async () => {
