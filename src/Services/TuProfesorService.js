@@ -2,17 +2,17 @@ import axiosClient from "./TuProfesorClient";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const getVerificacion = async (userState) => {  
+  console.log(userState)
   return axiosClient
       .post(`/teachers/login`,{
-        email: userState.email,
-        password: userState.password,
+         ...userState
       })
       .then((res) => {
         console.log(res.data.token)
         return res.data.token
       })
       .catch((e) => {
-        throw "Error 401"
+        throw "Error"
       });
 };
 
@@ -103,27 +103,17 @@ export const ProfesorRegister = async (userState) => {
    */
 
   export const Alumnologin = async (userState) => {
-    
-    console.log(userState);
+    console.log(userState)
     return axiosClient
-      .post(`/students/login`, 
-      {...userState})
-      .then(async(res) => {
-        console.log(res.data);
-        console.log(res.data.length);
-        if(res.data.length){
-          let userToken = res.data.token; // poner punto (nombe que viene del back)
-          let userId = res.data.id
-          const idValue = JSON.stringify(userId) // lo pasa a string
-          await AsyncStorage.setItem('token', userToken) // guarda en el storage con el nombre token 
-          await AsyncStorage.setItem('id', idValue) // guarda en el storage con el nombre id
-        } 
-        else {
-          console.log("no entro")
-        } 
+      .post(`/students/login`,{
+         ...userState
       })
-      .catch(() => {
-        console.log(`login error`);
+      .then((res) => {
+        console.log(res.data.token)
+        return res.data.token
+      })
+      .catch((e) => {
+        throw "Error"
       });
 
    };
@@ -135,7 +125,6 @@ export const ProfesorRegister = async (userState) => {
   export const GetProfesores = async () => {
     const tokenId = await AsyncStorage.getItem('token')
     const id = await AsyncStorage.getItem('id')
-    
     return axiosClient
       .get(`/teachers/activos`/*, {
         headers: {'Authorization': 'Bearer ' + tokenId}}*/)

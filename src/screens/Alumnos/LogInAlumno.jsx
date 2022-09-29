@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, TextInput, Text } from 'react-native';
+import { View, StyleSheet, TextInput, Text, Alert } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from '../../components/CustomButton';
 import CustomLogo from '../../components/CustomLogo';
 import { Alumnologin } from '../../Services/TuProfesorService';
+import { ActionTypes } from '../../../contextState';
+import { useContextState } from '../../../contextState';
 
 const LogInAlumno = () => {
     const navigation = useNavigation();
@@ -13,12 +15,26 @@ const LogInAlumno = () => {
         password: '',
     });
 
-    const inicioSesionBoton = async () => {
+    const { contextState, setContextState } = useContextState();
+
+    const verificacion = async (event) => {
+      //event.preventDefault()
       if (!userState.email || !userState.password) {
-        console.log("No se puede iniciar sesión sin email o contraseña");
-      } else {
-            await Alumnologin(userState).then(() => {
-            navigation.navigate('Home');  
+        console.log("No se han ingresado los valores")
+      }
+      else {
+         Alumnologin(userState)
+          .then((res) => {
+            setContextState({
+              type:ActionTypes.SetToken,
+              value: res
+            })
+            console.log("ok")
+            navigation.navigate('Home')
+          })
+          .catch(() => {
+            Alert.alert("Su clave no esta autorizada")
+            console.log("aca")
           });
       }
     }
@@ -31,7 +47,7 @@ const LogInAlumno = () => {
             <TextInput style={styles.input} placeholder="Contraseña" value={userState.password} secureTextEntry={true} onChangeText={text => setUserState({ ...userState, password: text })}/>
             
 
-            <CustomButton text={'Iniciar sesion'} onPress={inicioSesionBoton}/>
+            <CustomButton text={'Iniciar sesion'} onPress={verificacion}/>
             
             <CustomButton text="Todavia no tienes cuenta, registrate aqui" onPress={() => navigation.navigate('Register')}/>
         </View>

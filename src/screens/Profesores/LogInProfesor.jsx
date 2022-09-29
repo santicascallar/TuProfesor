@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { View, StyleSheet, TextInput, Text } from 'react-native';
+import { View, StyleSheet, TextInput, Text, Alert} from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from '../../components/CustomButton';
 import CustomLogo from '../../components/CustomLogo';
-import { Profesorlogin } from '../../Services/TuProfesorService';
 import { getVerificacion } from '../../Services/TuProfesorService';
 import { useContextState } from '../../../contextState';
 import { ActionTypes } from '../../../contextState';
@@ -37,17 +36,6 @@ const LogInProfesor = () => {
             Alert.alert("Su clave no esta autorizada")
             console.log("aca")
           });
-      }
-    }
-
-
-    const inicioSesionBoton = async () => {
-      if (!userState.email || !userState.password) {
-        console.log("No se puede iniciar sesión sin email o contraseña");
-      } else {
-          await Profesorlogin(userState).then(() => {
-            navigation.navigate('Home');
-        });
       }
     }
 

@@ -17,14 +17,13 @@ const RegisterProfesor = () => {
         borndate:'1985-04-04T00:00:00.000Z',
         ubicacion:'',
         telefono:'222222226',
-        activo: '1',
         disponibilidad:'2021-08-09T10:58:48.000Z',
-        tipo:'1',
+        tipo:'1'
     });   
     
     
         const RegisterBoton = async () => {
-          if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.disponibilidad || !userState.tipo || !userState.activo) {
+          if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.disponibilidad || !userState.tipo) {
             console.log("Llenar todos los datos");
           } else {
                 await ProfesorRegister(userState).then(() => {
