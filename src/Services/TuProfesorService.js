@@ -1,5 +1,5 @@
 import axiosClient from "./TuProfesorClient";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useContextState } from "../../contextState";
 
 export const getVerificacion = async (userState) => {  
   console.log(userState)
@@ -115,8 +115,7 @@ export const ProfesorRegister = async (userState) => {
   //
 
   export const GetProfesores = async () => {
-    const tokenId = await AsyncStorage.getItem('token')
-    const id = await AsyncStorage.getItem('id')
+    
     return axiosClient
       .get(`/teachers/activos`/*, {
         headers: {'Authorization': 'Bearer ' + tokenId}}*/)
@@ -139,7 +138,7 @@ export const ProfesorRegister = async (userState) => {
   //
 
     export const GetMaterias = async () => {
-        const tokenId = await AsyncStorage.getItem('token')
+        
         return axiosClient
             .get(`/teachers/materias`/*, {
             headers: {'Authorization': 'Bearer ' + tokenId}
@@ -161,7 +160,7 @@ export const ProfesorRegister = async (userState) => {
     //
 
     export const GetProfesor = async (id) => {
-        const tokenId = await AsyncStorage.getItem('token')
+        
         
         return axiosClient
             .get(`/teachers/id/${id}`/*, {
@@ -183,7 +182,7 @@ export const ProfesorRegister = async (userState) => {
     //
 
     export const GetProfesorByMateria = async (materia) => {
-        const tokenId = await AsyncStorage.getItem('token')
+        
         
         return axiosClient
             .get(`/teachers?materia=${materia}`/*, {
@@ -205,8 +204,7 @@ export const ProfesorRegister = async (userState) => {
     //
 
     export const ClaseReservar = async (peticion) => {
-        const tokenId = await AsyncStorage.getItem('token')
-        const id = await AsyncStorage.getItem('id')
+        
 
         return axiosClient
             .post(`/teachers/reservar`, {id, peticion}/*, {
@@ -223,7 +221,7 @@ export const ProfesorRegister = async (userState) => {
     }
 
     export const GetProfesorByTipo = async (tipo) => {
-      const tokenId = await AsyncStorage.getItem('token')
+      
       
       return axiosClient
           .get(`/teachers?tipo=${tipo}`/*, {

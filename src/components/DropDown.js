@@ -17,7 +17,7 @@ const DropDown = (props) => {
         console.log(err);
       })
       */
-     props.update(selected)
+      props.update(selected)
     } } />
   )
 }

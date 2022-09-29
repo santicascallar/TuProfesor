@@ -29,7 +29,6 @@ const Home = () => {
                 }
             }))
             console.log({dataMaterias: data})
-            console.log(materias)
           
           });
     } ,[]);
