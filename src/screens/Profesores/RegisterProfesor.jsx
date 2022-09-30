@@ -11,7 +11,6 @@ const RegisterProfesor = () => {
     const navigation = useNavigation();
     const [userState, setUserState] = useState({
       borndate:"2022-08-09",
-      disponibilidad:"2022-08-09 10:58:48",
       email:"",
       password:"",
       nombre:"",
@@ -23,7 +22,7 @@ const RegisterProfesor = () => {
     
     
         const RegisterBoton = async () => {
-          if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.disponibilidad || !userState.tipo) {
+          if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.tipo) {
             console.log("Llenar todos los datos");
           } else {
                 await ProfesorRegister(userState).then(() => {
@@ -45,7 +44,6 @@ const RegisterProfesor = () => {
             <TextInput style={styles.input} placeholder="Ubicacion" value={userState.ubicacion} onChangeText={text => setUserState({ ...userState, ubicacion: text })}/>
             <TextInput style={styles.input} placeholder="Tipo" value={userState.tipo} onChangeText={text => setUserState({ ...userState, tipo: text })}/>
             <TextInput style={styles.input} placeholder="Fecha de Nacimiento" value={userState.borndate} onChangeText={text => setUserState({ ...userState, borndate: text })}/>
-            <TextInput style={styles.input} placeholder="Disponibilidad" value={userState.disponibilidad} onChangeText={text => setUserState({ ...userState, disponibilidad: text })}/>
             
             <CustomButton text={'Registrarse'} onPress={RegisterBoton}/>
         </View>

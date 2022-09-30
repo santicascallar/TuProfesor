@@ -30,7 +30,7 @@ const LogInAlumno = () => {
               value: res
             })
             console.log("ok")
-            navigation.navigate('Home')
+            navigation.navigate('HomeAlumno')
           })
           .catch(() => {
             Alert.alert("Su clave no esta autorizada")

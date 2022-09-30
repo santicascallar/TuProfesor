@@ -23,7 +23,7 @@ const RegisterAlumno = () => {
             console.log("Llenar todos los datos");
           } else {
                 await AlumnoRegister(userState).then(() => {
-                navigation.navigate('Home');
+                navigation.navigate('HomeAlumno');
               });
           }
         }

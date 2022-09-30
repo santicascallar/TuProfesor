@@ -11,8 +11,8 @@ import { ActionTypes } from '../../../contextState';
 const LogInProfesor = () => {
     const navigation = useNavigation();
     const [userState, setUserState] = useState({
-        email: 'binker@ort.edu.ar',
-        password: 'Binker',
+        email: '',
+        password: '',
     });
 
     const { contextState, setContextState } = useContextState();
@@ -29,7 +29,7 @@ const LogInProfesor = () => {
               value: res
             })
             console.log("ok")
-            navigation.navigate('Home')
+            navigation.navigate('HomeProfesor')
           })
           .catch(() => {
             Alert.alert("Su clave no esta autorizada")

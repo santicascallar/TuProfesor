@@ -7,12 +7,14 @@ import { Image } from "react-native";
 import Main from "../screens/Main";
 import LogInProfesor from "../screens/Profesores/LogInProfesor";
 import LogInAlumno from "../screens/Alumnos/LogInAlumno";
-import Home from "../screens/Home";
+import HomeProfesor from "../screens/Profesores/HomeProfesor";
+import HomeAlumno from "../screens/Alumnos/HomeAlumno"
 import DetalleProfesor from "../screens/DetalleProfesor";
 import ReservarClase from "../screens/ReservarClase";
 import Register from "../screens/Register";
 import RegisterAlumno from "../screens/Alumnos/RegisterAlumno";
 import RegisterProfesor from "../screens/Profesores/RegisterProfesor";
+import PerfilAlumno from "../screens/Alumnos/PerfilAlumno";
 
 function LogoTitle() {
     return (
@@ -55,10 +57,25 @@ function MyStack(){
                 }}
             />
             <MainStackNavigator.Screen
-                name="Home"
-                component={Home}
+                name="HomeProfesor"
+                component={HomeProfesor}
                 options={{ 
                    headerShown: false
+                }}
+            />
+            <MainStackNavigator.Screen
+                name="HomeAlumno"
+                component={HomeAlumno}
+                options={{ 
+                   headerShown: false
+                }}
+            />
+            <MainStackNavigator.Screen
+                name="PerfilAlumno"
+                component={PerfilAlumno}
+                options={{ 
+                    headerTitle: LogoTitle, 
+                    headerStyle: { backgroundColor: '#169DFF' }    
                 }}
             />
             <MainStackNavigator.Screen

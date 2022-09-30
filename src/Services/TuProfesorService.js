@@ -229,4 +229,45 @@ export const ProfesorRegister = async (userState) => {
           console.log(`error `, err.response);
           throw err //propagar error
       }); // => Promise<AxiosResponse>
-  };
+    };
+
+    export const getPeticionesbyProfesor = async (id) => {
+      return axiosClient
+          .get(`/teachers/peticion/${id}`)
+          .then((res) => {
+          const peticiones = res.data;
+          return peticiones
+          })
+          .catch((err) => {
+          console.log(`error `, err.response);
+          throw err 
+      });
+    }
+
+    export const getPeticionesbyAlumno = async (id) => {
+      return axiosClient
+          .get(`/students/peticion/${id}`)
+          .then((res) => {
+          const peticiones = res.data;
+          return peticiones
+          })
+          .catch((err) => {
+          console.log(`error `, err.response);
+          throw err 
+      });
+    }
+
+    export const updatePeticion = async (id, peticion) => {
+      return axiosClient
+          .put(`/peticiones/${id}`,{
+            ...peticion
+         })
+          .then((res) => {
+          const peticion = res.data;
+          return peticion
+          })
+          .catch((err) => {
+          console.log(`error `, err.response);
+          throw err 
+      });
+    }
