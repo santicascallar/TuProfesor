@@ -26,7 +26,7 @@ const LogInAlumno = () => {
          Alumnologin(userState)
           .then((res) => {
             setContextState({
-              type:ActionTypes.SetToken,
+              type:ActionTypes.SetPersona,
               value: res
             })
             console.log("ok")

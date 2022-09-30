@@ -2,13 +2,13 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList, ScrollView, CheckBox } from 'react-native';
 import DropDown from '../components/DropDown';
-import CustomLogo from '../components/CustomLogo';
 import ProfesoresList from '../components/ProfesoresList';
 import { GetProfesores } from '../Services/TuProfesorService';
 import { GetProfesorByTipo } from '../Services/TuProfesorService';
 import { GetProfesorByMateria, GetMaterias } from '../Services/TuProfesorService';
 //import { Checkbox } from 'react-native-paper';
 import { useContextState } from '../../contextState';
+import CustomButton from '../components/CustomButton';
 
 const Home = () => {
     const [profesores, setProfesores] = useState([]);
@@ -19,6 +19,7 @@ const Home = () => {
     const {contextState, setContextState}= useContextState();
 
     useEffect(() =>{
+        console.log(contextState)
         GetProfesores().then(data => setProfesores(data));
         
         GetMaterias().then(data => {
@@ -33,32 +34,42 @@ const Home = () => {
           });
     } ,[]);
 
-    /*useEffect(() => {
-        if(!contextState.token){ 
+    useEffect(() => {
+        if(!contextState.persona[0].token){ 
           console.log('No hay token');
           navigation.navigate("LogIn")  //Si no hay token en el contexto, te manda a la pantalla de login
         }
         else{
           console.log("HAY TOKEN")
         }
-    })*/
+    })
 
     const setearProf = (materia) => [
         GetProfesorByMateria(materia).then(res => {
             setProfesores(res);
-          }).catch(err => {
-            console.log(err);
           })
     ]
 
-    const presencial = async () => {
-        setCheckedPresencial();
-        GetProfesorByTipo(1).then(res => {
-            setProfesores(res);
-        }).catch(err => {
-            console.log(err);
-        })
-        console.log("presencial");
+    const presencialVirtual = async () => {
+        if(checkedPresencial == true){
+            GetProfesorByTipo(1).then(res => {
+                setProfesores(res);
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
+            console.log("presencial");
+        }
+        else if(checkedVirtual == true){
+            GetProfesorByTipo(0).then(res => {
+                setProfesores(res);
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
+            console.log("virtual");
+        }
+        
     }
 
     return (
@@ -69,7 +80,7 @@ const Home = () => {
             <Text>Presencial</Text>
             <CheckBox
                 value={checkedPresencial}
-                onValueChange={presencial}
+                onValueChange={setCheckedPresencial}
             />
 
             <Text>Virtual</Text>
@@ -77,6 +88,7 @@ const Home = () => {
                 value={checkedVirtual}
                 onValueChange={setCheckedVirtual}
             />
+            <CustomButton text={'Aceptar'} onPress={presencialVirtual}/>
             </View>
 
             {/*<FlatList
@@ -88,7 +100,7 @@ const Home = () => {
             <View style={styles.container}>
                 <FlatList
                     data={profesores}
-                    keyExtractor={ (item) => item.id}
+                    keyExtractor={ (item) => item.id} //acá error?
                     renderItem = {({item}) => <ProfesoresList key={item.id} profesores={item} />
                 }
                     showsVerticalScrollIndicator={false}

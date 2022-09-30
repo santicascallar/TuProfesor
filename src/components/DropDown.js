@@ -10,13 +10,6 @@ const DropDown = (props) => {
   return(
     <SelectList setSelected={setSelected} data={props.data} onSelect={() => {
       alert(selected)
-      /*
-      GetProfesorByMateria(selected).then(res => {
-        props.update(res);
-      }).catch(err => {
-        console.log(err);
-      })
-      */
       props.update(selected)
     } } />
   )

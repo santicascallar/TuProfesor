@@ -8,8 +8,8 @@ export const getVerificacion = async (userState) => {
          ...userState
       })
       .then((res) => {
-        console.log(res.data.token)
-        return res.data.token
+        console.log(res.data)
+        return res.data
       })
       .catch((e) => {
         throw "Error"
@@ -101,8 +101,8 @@ export const ProfesorRegister = async (userState) => {
          ...userState
       })
       .then((res) => {
-        console.log(res.data.token)
-        return res.data.token
+        console.log(res.data)
+        return res.data
       })
       .catch((e) => {
         throw "Error"
@@ -204,15 +204,11 @@ export const ProfesorRegister = async (userState) => {
     //
 
     export const ClaseReservar = async (peticion) => {
-        
-
         return axiosClient
-            .post(`/teachers/reservar`, {id, peticion}/*, {
-            headers: {'Authorization': 'Bearer ' + tokenId}
-            }*/).then((res) => { // si status code entre 200 y 299
-    
-            const profesor = res.data;
-            return profesor
+            .post(`/peticiones`,{
+              ...peticion
+           }).then((res) => { 
+              console.log(res)
             })
             .catch((err) => { // status >= 300
             console.log(`error `, err.response);
@@ -221,13 +217,11 @@ export const ProfesorRegister = async (userState) => {
     }
 
     export const GetProfesorByTipo = async (tipo) => {
-      
-      
       return axiosClient
           .get(`/teachers?tipo=${tipo}`/*, {
           headers: {'Authorization': 'Bearer ' + tokenId}
-          }*/).then((res) => { // si status code entre 200 y 299
-  
+          }*/)
+          .then((res) => { // si status code entre 200 y 299
           const profesor = res.data;
           return profesor
           })

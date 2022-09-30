@@ -11,14 +11,13 @@ import { ActionTypes } from '../../../contextState';
 const LogInProfesor = () => {
     const navigation = useNavigation();
     const [userState, setUserState] = useState({
-        email: '',
-        password: '',
+        email: 'binker@ort.edu.ar',
+        password: 'Binker',
     });
 
     const { contextState, setContextState } = useContextState();
 
-    const verificacion = async (event) => {
-      //event.preventDefault()
+    const verificacion = async () => {
       if (!userState.email || !userState.password) {
         console.log("No se han ingresado los valores")
       }
@@ -26,7 +25,7 @@ const LogInProfesor = () => {
          getVerificacion(userState)
           .then((res) => {
             setContextState({
-              type:ActionTypes.SetToken,
+              type:ActionTypes.SetPersona,
               value: res
             })
             console.log("ok")

@@ -6,17 +6,21 @@ import CustomButton from '../components/CustomButton';
 import CustomLogo from '../components/CustomLogo';
 import { TextInput } from 'react-native-paper';
 import { ClaseReservar } from '../Services/TuProfesorService';
+import { useContextState } from '../../contextState';
 
 const ReservarClase = ({route}) => {
 
     const navigation = useNavigation();
+    const {contextState, setContextState} = useContextState();
     const [userState, setUserState] = useState({
         horario: '',
         detalles: '',
         idProfesor: route.params.id,
+        idAlumno: contextState.persona[0].id,
     });
     
     const ReservarBoton = async () => {
+        console.log(contextState.persona[0].id)
         if (!userState.horario || !userState.detalles) {
           console.log("error");
         } else {
