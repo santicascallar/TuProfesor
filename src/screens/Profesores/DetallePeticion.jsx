@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../../components/CustomButton";
 import CustomLogo from "../../components/CustomLogo";
 import { updatePeticion } from "../../Services/TuProfesorService";
+import PeticionesList from "../../components/PeticionesList";
 
 
 const DetallePeticion = (props) => {
@@ -15,48 +16,26 @@ const DetallePeticion = (props) => {
         getPeticionesbyProfesor(props.route.params.id).then(data => setPeticion(data));
     },[]);
 
-    const aceptarPeticion = () => {
-        updatePeticion(data.id).then(data => setPeticion(data));
+    const cambiarPeticion = (id, estado) => {
+
+        updatePeticion(id, estado).then(data => setPeticion(data));
     }
 
     return (
         <View>
             <FlatList
                 data={profesores}
-                keyExtractor={ (item) => item.id}
-                renderItem = {({item, index}) => (
-    
+                keyExtractor={ (item) => item.idPeticion}
+                renderItem = {({item}) => <PeticionesList key={item.idPeticion} peticion={item} />}
+            />
                 <View>
-                <Text style={styles.title}>Mi Peticion:</Text>
-
-                <Text style={styles.text}> Numero: {item.idPeticion}</Text>
-                <Text style={styles.text}> Alumno: {item.nombre} {item.apellido}</Text>
-                <Text style={styles.text}> Descripcion: {item.descripcion}</Text>
-                <Text style={styles.text}> Hora: {item.Horario} </Text>
 
                 <View style={styles.container}>
-                    <CustomButton text={"Aceptar Peticion"} onPress={aceptar}/>
-                    <CustomButton text={"Rechazar Peticion"} onPress={rechazar}/>
+                    <CustomButton text={"Aceptar Peticion"} onPress={cambiarPeticion(item.idPeticion, 2)}/>
+                    <CustomButton text={"Rechazar Peticion"} onPress={cambiarPeticion(item.idPeticion, 3)}/>
                 </View>
                     
                 </View>
-                
-                )}
-
-            /> 
-
-            {/*<FlatList
-                    horizontal={true}
-                    data={this.state.topPopularMovies}
-                    renderItem={({ item }) => (
-                    <View>
-                        <Text>{item.original_title}</Text>
-                        <Button onPress={this.mybuttonclick} title="hello"/>
-                    </View>
-                    )}
-                    keyExtractor={item => item.id}
-                />*/}
-            
         </View>
     );
 }

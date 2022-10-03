@@ -257,10 +257,10 @@ export const ProfesorRegister = async (userState) => {
       });
     }
 
-    export const updatePeticion = async (id, peticion) => {
+    export const updatePeticion = async (id, estado) => {
       return axiosClient
           .put(`/peticiones/${id}`,{
-            ...peticion
+            ...estado
          })
           .then((res) => {
           const peticion = res.data;
@@ -268,6 +268,6 @@ export const ProfesorRegister = async (userState) => {
           })
           .catch((err) => {
           console.log(`error `, err.response);
-          throw err 
+          throw err  
       });
     }
