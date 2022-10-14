@@ -8,6 +8,7 @@ import { getPeticionesbyAlumno } from '../../Services/TuProfesorService';
 const PerfilAlumno = () => {
     const [peticiones, setPeticiones] = useState([]);
     const {contextState, setContextState}= useContextState();
+    
     useEffect(() =>{
         console.log(contextState)
         getPeticionesbyAlumno(contextState.persona[0].id).then(data => setPeticiones(data));

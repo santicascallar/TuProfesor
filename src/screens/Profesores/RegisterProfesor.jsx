@@ -18,7 +18,7 @@ const RegisterProfesor = () => {
       tipo:"",
       telefono:"",
       ubicacion:""
-    });   
+    });
     
     
         const RegisterBoton = async () => {

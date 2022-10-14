@@ -53,7 +53,6 @@ function MyStack(){
                 component={LogInAlumno}
                 options={{ 
                     headerTitle: '', 
-                    headerStyle: { backgroundColor: '#169DFF' }    
                 }}
             />
             <MainStackNavigator.Screen

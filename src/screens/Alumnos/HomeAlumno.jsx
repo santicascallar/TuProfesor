@@ -6,7 +6,6 @@ import ProfesoresList from '../../components/ProfesoresList';
 import { GetProfesores } from '../../Services/TuProfesorService';
 import { GetProfesorByTipo } from '../../Services/TuProfesorService';
 import { GetProfesorByMateria, GetMaterias } from '../../Services/TuProfesorService';
-//import { Checkbox } from 'react-native-paper';
 import { useContextState } from '../../../contextState';
 import CustomButton from '../../components/CustomButton';
 
@@ -42,12 +41,12 @@ const HomeAlumno = () => {
         else{
           console.log("HAY TOKEN")
         }
-    })
+    });
 
     const setearProf = (materia) => [
         GetProfesorByMateria(materia).then(res => {
             setProfesores(res);
-          })
+        })
     ]
 
     const presencialVirtual = async () => {
@@ -69,7 +68,6 @@ const HomeAlumno = () => {
             })
             console.log("virtual");
         }
-        
     }
 
     return (
