@@ -4,14 +4,17 @@ import {StyleSheet, Text, View, FlatList, ScrollView, CheckBox } from 'react-nat
 import { useContextState } from '../../../contextState';
 import CustomButton from '../../components/CustomButton';
 import { getPeticionesbyAlumno } from '../../Services/TuProfesorService';
+import { useNavigation } from "@react-navigation/native";
 
 const PerfilAlumno = () => {
+    const navigation = useNavigation();
     const [peticiones, setPeticiones] = useState([]);
     const {contextState, setContextState}= useContextState();
     
     useEffect(() =>{
         console.log(contextState)
         getPeticionesbyAlumno(contextState.persona[0].id).then(data => setPeticiones(data));
+        console.log("Peticiones: ", peticiones)
     } ,[]);
 
 
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f9c2ff',
         padding: 20,
         marginVertical: 8,
-        marginHorizontal: 16,
+        marginHorizontal: 16, 
     },
     itemText: {
         fontSize: 18,

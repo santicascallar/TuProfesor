@@ -5,37 +5,40 @@ import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../../components/CustomButton";
 import CustomLogo from "../../components/CustomLogo";
 import { updatePeticion } from "../../Services/TuProfesorService";
-import PeticionesList from "../../components/PeticionesList";
+import { getPeticion } from "../../Services/TuProfesorService";
 
 
 const DetallePeticion = (props) => {
     const navigation = useNavigation();
-    const [peticion, setPeticion] = useState([]);
+    const [peticion, setPeticion] = useState({});
 
     useEffect(() =>{
-        getPeticionesbyProfesor(props.route.params.id).then(data => setPeticion(data));
+       // getPeticion(props.route.params.id).then(data => setPeticion(data));
+        console.log("use effect antes del get")
+        getPeticion(props.route.params.id, setPeticion) 
+        console.log("use effect desp del get")
+        console.log(peticion)
     },[]);
 
     const cambiarPeticion = (id, estado) => {
 
         updatePeticion(id, estado).then(data => setPeticion(data));
+        navigation.navigate("HomeProfesor")
     }
 
     return (
         <View>
-            <FlatList
-                data={profesores}
-                keyExtractor={ (item) => item.idPeticion}
-                renderItem = {({item}) => <PeticionesList key={item.idPeticion} peticion={item} />}
-            />
+                <Text> id: {peticion.idPeticion}</Text>
+                <Text> Alumno: {peticion.anombre} </Text>
+                <Text> Descripcion: {peticion.descripcion}</Text>
+                <Text> Hora: {peticion.horario}:00 </Text>
+                <Text> Estado: {peticion.Estado}</Text>
                 <View>
-
-                <View style={styles.container}>
-                    <CustomButton text={"Aceptar Peticion"} onPress={cambiarPeticion(item.idPeticion, 2)}/>
-                    <CustomButton text={"Rechazar Peticion"} onPress={cambiarPeticion(item.idPeticion, 3)}/>
-                </View>
-                    
-                </View>
+                    <CustomButton text={"Aceptar Peticion"} //onPress={cambiarPeticion(peticion[0].idPeticion, 2)}
+                    />
+                    <CustomButton text={"Rechazar Peticion"} //onPress={cambiarPeticion(peticion[0].idPeticion, 3)}
+                    />
+                </View> 
         </View>
     );
 }

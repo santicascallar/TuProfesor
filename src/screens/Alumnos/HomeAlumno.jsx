@@ -8,8 +8,10 @@ import { GetProfesorByTipo } from '../../Services/TuProfesorService';
 import { GetProfesorByMateria, GetMaterias } from '../../Services/TuProfesorService';
 import { useContextState } from '../../../contextState';
 import CustomButton from '../../components/CustomButton';
+import { useNavigation } from "@react-navigation/native";
 
 const HomeAlumno = () => {
+    const navigation = useNavigation();
     const [profesores, setProfesores] = useState([]);
     const [materias, setMaterias] = useState([]);
     const [checkedPresencial, setCheckedPresencial] = useState(false);
@@ -108,7 +110,7 @@ const HomeAlumno = () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center' 
     }
 });
 

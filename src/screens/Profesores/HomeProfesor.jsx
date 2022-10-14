@@ -4,6 +4,7 @@ import {StyleSheet, Text, View, FlatList, ScrollView, CheckBox } from 'react-nat
 import { useContextState } from '../../../contextState';
 import CustomButton from '../../components/CustomButton';
 import { getPeticionesbyProfesor } from '../../Services/TuProfesorService';
+import PeticionesList from "../../components/PeticionesList";
 
 const HomeProfesor = () => {
     const [peticiones, setPeticiones] = useState([]);
@@ -30,15 +31,8 @@ const HomeProfesor = () => {
             <Text style={styles.title}>Peticiones de Alumnos</Text>
             <FlatList
                 data={peticiones}
-                renderItem={({item}) => {
-                    return (
-                        <View style={styles.item}>
-                            <Text style={styles.itemText}>Peticion por {item.nombre}</Text>
-                            <Text style={styles.itemText}>{item.Horario}:00</Text>
-                            <Text style={styles.itemText}>Peticion {item.nombreEstado}</Text>
-                        </View>
-                    )
-                }}
+                keyExtractor={ (item) => item.idPeticion}
+                renderItem = {({item}) => <PeticionesList key={item.idPeticion} peticion={item} />}
             />
         </View>
     )

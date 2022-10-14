@@ -15,6 +15,7 @@ import Register from "../screens/Register";
 import RegisterAlumno from "../screens/Alumnos/RegisterAlumno";
 import RegisterProfesor from "../screens/Profesores/RegisterProfesor";
 import PerfilAlumno from "../screens/Alumnos/PerfilAlumno";
+import DetallePeticion from "../screens/Profesores/DetallePeticion";
 
 function LogoTitle() {
     return (
@@ -60,6 +61,14 @@ function MyStack(){
                 component={HomeProfesor}
                 options={{ 
                    headerShown: false
+                }}
+            />
+            <MainStackNavigator.Screen
+                name="DetallePeticion"
+                component={DetallePeticion}
+                options={{ 
+                    headerTitle: LogoTitle, 
+                    headerStyle: { backgroundColor: '#169DFF' }    
                 }}
             />
             <MainStackNavigator.Screen

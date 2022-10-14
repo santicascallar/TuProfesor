@@ -249,6 +249,7 @@ export const ProfesorRegister = async (userState) => {
           .get(`/students/peticion/${id}`)
           .then((res) => {
           const peticiones = res.data;
+          console.log(peticiones)
           return peticiones
           })
           .catch((err) => {
@@ -269,5 +270,20 @@ export const ProfesorRegister = async (userState) => {
           .catch((err) => {
           console.log(`error `, err.response);
           throw err  
+      });
+    }
+
+    export const getPeticion = (id,cb) => {
+      return axiosClient
+          .get(`/peticiones/id/${id}`)
+          .then((res) => {
+              const peticiones = res.data;
+              console.log("then de axios")
+              console.log(peticiones)
+              cb(peticiones[0])
+          })
+          .catch((err) => {
+          console.log(`error `, err.response);
+          throw err 
       });
     }

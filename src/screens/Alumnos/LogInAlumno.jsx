@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { View, StyleSheet, TextInput, Text, Alert, ScrollView, ImageBackground, Dimensions } from 'react-native';
-import { Item } from 'react-native-paper/lib/typescript/components/Drawer/Drawer';
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from '../../components/CustomButton';
 import CustomLogo from '../../components/CustomLogo';
@@ -109,7 +108,23 @@ const styles = StyleSheet.create({
     },
     arribaText:{
       fontSize: 20
-    }
-  });
+    },
+    container: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      flex:1
+  },
+  input:{
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderRadius: 5, //lo curva del borde
+    paddingHorizontal: 10,
+    marginVertical: 5,
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding:10
+  }
+});
 
 export default LogInAlumno;
