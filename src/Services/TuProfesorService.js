@@ -236,6 +236,18 @@ export const ProfesorRegister = async (userState) => {
           .get(`/teachers/peticion/${id}`)
           .then((res) => {
           const peticiones = res.data;
+          for(let i = 0; i < peticiones.length; i++){
+            if(peticiones[i].Estado == 1){
+              peticiones[i].estadoPeticion = "Pendiente"
+            }
+            else if(peticiones[i].Estado == 2){
+              peticiones[i].estadoPeticion = "Aceptada"
+            }
+            else{
+              peticiones[i].estadoPeticion = "Rechazada"
+            }
+          }
+          console.log(peticiones)
           return peticiones
           })
           .catch((err) => {
@@ -270,12 +282,14 @@ export const ProfesorRegister = async (userState) => {
     }
 
     export const updatePeticion = async (id, estado) => {
+      console.log(estado)
       return axiosClient
           .put(`/peticiones/${id}`,{
-            ...estado
+            Estado: estado
          })
           .then((res) => {
           const peticion = res.data;
+
           return peticion
           })
           .catch((err) => {
@@ -289,6 +303,17 @@ export const ProfesorRegister = async (userState) => {
           .get(`/peticiones/id/${id}`)
           .then((res) => {
               const peticiones = res.data;
+              for(let i = 0; i < peticiones.length; i++){
+                if(peticiones[i].Estado == 1){
+                  peticiones[i].estadoPeticion = "Pendiente"
+                }
+                else if(peticiones[i].Estado == 2){
+                  peticiones[i].estadoPeticion = "Aceptada"
+                }
+                else{
+                  peticiones[i].estadoPeticion = "Rechazada"
+                }
+              }
               console.log(peticiones)
               cb(peticiones[0])
           })

@@ -16,6 +16,7 @@ export default function PeticionesList ({peticion}){
         <Text style={styles.text}> Alumno: {peticion.nombre}</Text>
         <Text style={styles.text}> Descripcion: {peticion.descripcion}</Text>
         <Text style={styles.text}> Hora: {peticion.Horario}:00 </Text>
+        <Text style={styles.text}> Estado: {peticion.estadoPeticion}</Text>
 
         {/*<Text style={styles.lista} >
             {profesores.nombre} {profesores.apellido} {profesores.ubicacion}
