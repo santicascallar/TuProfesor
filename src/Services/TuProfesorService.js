@@ -249,6 +249,17 @@ export const ProfesorRegister = async (userState) => {
           .get(`/students/peticion/${id}`)
           .then((res) => {
           const peticiones = res.data;
+          for(let i = 0; i < peticiones.length; i++){
+            if(peticiones[i].Estado == 1){
+              peticiones[i].estadoPeticion = "Pendiente"
+            }
+            else if(peticiones[i].Estado == 2){
+              peticiones[i].estadoPeticion = "Aceptada"
+            }
+            else{
+              peticiones[i].estadoPeticion = "Rechazada"
+            }
+          }
           console.log(peticiones)
           return peticiones
           })
@@ -273,12 +284,11 @@ export const ProfesorRegister = async (userState) => {
       });
     }
 
-    export const getPeticion = (id,cb) => {
+    export const getPeticion = async (id,cb) => {
       return axiosClient
           .get(`/peticiones/id/${id}`)
           .then((res) => {
               const peticiones = res.data;
-              console.log("then de axios")
               console.log(peticiones)
               cb(peticiones[0])
           })

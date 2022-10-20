@@ -14,7 +14,6 @@ const PerfilAlumno = () => {
     useEffect(() =>{
         console.log(contextState)
         getPeticionesbyAlumno(contextState.persona[0].id).then(data => setPeticiones(data));
-        console.log("Peticiones: ", peticiones)
     } ,[]);
 
 
@@ -26,13 +25,12 @@ const PerfilAlumno = () => {
             <View style={styles.container}>
                 <FlatList
                     data={peticiones}
-                    keyExtractor={ (item) => item.id}
+                    key={ (item) => item.id}
                     renderItem = {({item, index}) => (
                         <View>
                         <Text style={styles.itemText}>Peticion realizada a {item.nombre} {item.apellido}</Text>
-                        <Text>Descripcion: {item.descripcion}</Text>
                         <Text>Hora: {item.Horario}</Text>
-                        <Text>Estado: {item.Estado}</Text> 
+                        <Text>Estado: {item.estadoPeticion}</Text> 
                         </View>
                     )
                 }
