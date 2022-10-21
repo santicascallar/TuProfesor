@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from 'react';
 import CustomButton from '../../components/CustomButton';
 import CustomLogo from '../../components/CustomLogo';
+import Dropdown from '../../components/DropDown';
 import { ProfesorRegister } from '../../Services/TuProfesorService';
 import { GetMaterias } from '../../Services/TuProfesorService';
 
@@ -11,14 +12,6 @@ const RegisterProfesor = () => {
 
     const navigation = useNavigation();
     const [materias, setMaterias] = useState([]);
-
-    const [materia1, setMateria1] = useState(false);
-    const [materia2, setMateria2] = useState(false);
-    const [materia3, setMateria3] = useState(false);
-    const [materia4, setMateria4] = useState(false);
-    const [materia5, setMateria5] = useState(false);
-    const [materia6, setMateria6] = useState(false);
-
 
     const [userState, setUserState] = useState({
       borndate:"2022-08-09",
@@ -29,12 +22,13 @@ const RegisterProfesor = () => {
       tipo:"",
       telefono:"",
       ubicacion:"",
+      materia:0,
     });
 
     
     
     const RegisterBoton = async () => {
-      if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.tipo) {
+      if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.tipo || !userState.materia) {
         console.log("Llenar todos los datos");
       } 
       else {
@@ -56,52 +50,6 @@ const RegisterProfesor = () => {
         });
     } ,[]);
 
-    const materiasEleccion = async () => {
-
-      if(materia1 == true){
-            materias = materias.filter(function(item){
-              return item.id == 1;
-           }).map(function({Materia}){
-               return Materia;
-           })
-      }
-      else if(materia2 == true){
-        materias = materias.filter(function(item){
-          return item.id == 2;
-        }).map(function({Materia}){
-           return Materia;
-       })
-      }
-      else if(materia3 == true){
-        materias = materias.filter(function(item){
-          return item.id == 3;
-        }).map(function({Materia}){
-           return Materia;
-       })
-      }
-      else if(materia4 == true){
-        materias = materias.filter(function(item){
-          return item.id == 4;
-        }).map(function({Materia}){
-           return Materia;
-       })
-      }
-      else if(materia5 == true){
-        materias = materias.filter(function(item){
-          return item.id == 5;
-        }).map(function({Materia}){
-           return Materia;
-       })
-      }
-      else if(materia6 == true){
-        materias = materias.filter(function(item){
-          return item.id == 6;
-        }).map(function({Materia}){
-           return Materia;
-       })
-      }
-  }
-
     return (
         <View style = {styles.container}>
             <CustomLogo onPress={() => navigation.navigate('Main')}/>
@@ -116,38 +64,7 @@ const RegisterProfesor = () => {
             <TextInput style={styles.input} placeholder="Tipo" value={userState.tipo} onChangeText={text => setUserState({ ...userState, tipo: text })}/>
             <TextInput style={styles.input} placeholder="Fecha de Nacimiento" value={userState.borndate} onChangeText={text => setUserState({ ...userState, borndate: text })}/>
 
-            {/* CheckBox de Materias */}
-            <Text>Matematica</Text>
-            <CheckBox
-                value={materia1}
-                onValueChange={setMateria1}
-            />
-            <Text>Programacion</Text>
-            <CheckBox
-                value={materia2}
-                onValueChange={setMateria2}
-            />
-            <Text>Lengua</Text>
-            <CheckBox
-                value={materia3}
-                onValueChange={setMateria3}
-            />
-            <Text>Historia</Text>
-            <CheckBox
-                value={materia4}
-                onValueChange={setMateria4}
-            />
-            <Text>Ingles</Text>
-            <CheckBox
-                value={materia5}
-                onValueChange={setMateria5}
-            />
-            <Text>Programacion</Text>
-            <CheckBox
-                value={materia6}
-                onValueChange={setMateria6}
-            />
-            <CustomButton text={'Aceptar'} onPress={materiasEleccion}/>
+            <Dropdown data={materias} update={text => setUserState({ ...userState, materia: text })}/>
             
             <CustomButton text={'Registrarse'} onPress={RegisterBoton}/>
         </View>
