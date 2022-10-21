@@ -7,6 +7,8 @@ import CustomLogo from '../../components/CustomLogo';
 import Dropdown from '../../components/DropDown';
 import { ProfesorRegister } from '../../Services/TuProfesorService';
 import { GetMaterias } from '../../Services/TuProfesorService';
+import { ProfesorByMail } from '../../Services/TuProfesorService';
+import { AgregarMaterias } from '../../Services/TuProfesorService';
 
 const RegisterProfesor = () => {
 
@@ -22,19 +24,18 @@ const RegisterProfesor = () => {
       tipo:"",
       telefono:"",
       ubicacion:"",
-      materia:0,
     });
-
-    
+    const [materiaState, setMateriaState] = useState({})
+    const [ProfesorState, setProfesorState] =useState({})
     
     const RegisterBoton = async () => {
-      if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.tipo || !userState.materia) {
+      if (!userState.email || !userState.password || !userState.nombre || !userState.apellido || !userState.ubicacion || !userState.telefono || !userState.borndate || !userState.tipo) {
         console.log("Llenar todos los datos");
       } 
       else {
-        await ProfesorRegister(userState).then(() => {
+        await ProfesorRegister(userState)
+        await AgregarMaterias(userState.email, materiaState.materia)
         navigation.navigate('Main');
-        });
       }
     }
 
@@ -46,7 +47,6 @@ const RegisterProfesor = () => {
                   value: item.Materia
               }
           }))
-          console.log({materias})
         });
     } ,[]);
 
@@ -64,7 +64,7 @@ const RegisterProfesor = () => {
             <TextInput style={styles.input} placeholder="Tipo" value={userState.tipo} onChangeText={text => setUserState({ ...userState, tipo: text })}/>
             <TextInput style={styles.input} placeholder="Fecha de Nacimiento" value={userState.borndate} onChangeText={text => setUserState({ ...userState, borndate: text })}/>
 
-            <Dropdown data={materias} update={text => setUserState({ ...userState, materia: text })}/>
+            <Dropdown data={materias} update={text => setMateriaState({ ...materiaState, materia: text })}/>
             
             <CustomButton text={'Registrarse'} onPress={RegisterBoton}/>
         </View>

@@ -18,17 +18,9 @@ export const getVerificacion = async (userState) => {
 
 export const ProfesorRegister = async (userState) => {
   console.log(userState);
-  axiosClient
-  .post(`/teachers/register`, {
-      ...userState
-  })
-  .then((response) => {
-    console.log(response);
-    return response;
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  const res = await axiosClient.post(`/teachers/register`, {...userState})
+  console.log(res)
+  return res
  };
 
  export const AlumnoRegister = async (userState) => {
@@ -322,3 +314,15 @@ export const ProfesorRegister = async (userState) => {
           throw err 
       });
     }
+
+  export const AgregarMaterias = async (mail, mat) => {
+    const profesor=await ProfesorByMail(mail)
+    console.log(profesor)
+    const res = await axiosClient.post(`/teachers/materias/${profesor[0].id}`, {materia:mat})
+    return res.data
+  }
+
+  export const ProfesorByMail = async (mail) => {
+    const profesor = await axiosClient.get(`/teachers/mail/${mail}`) // si status code entre 200 y 299
+    return profesor.data
+  }
