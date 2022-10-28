@@ -17,7 +17,7 @@ const PerfilAlumno = () => {
     } ,[]);
 
 
-    return (
+    return (   
         <View style={styles.container}>
             <Text style={styles.title}>Bienvenido {contextState.nombre}</Text>
             <Text style={styles.title}>Mis peticiones:</Text>
@@ -27,7 +27,7 @@ const PerfilAlumno = () => {
                     data={peticiones}
                     key={ (item) => item.id}
                     renderItem = {({item, index}) => (
-                        <View>
+                        <View style={styles.container2}>
                         <Text style={styles.itemText}>Peticion realizada a {item.nombre} {item.apellido}</Text>
                         <Text>Hora: {item.Horario}</Text>
                         <Text>Estado: {item.estadoPeticion}</Text> 
@@ -63,5 +63,8 @@ const styles = StyleSheet.create({
     },
     itemText: {
         fontSize: 18,
+    },
+    container2: {
+        paddingBottom: 30
     },
 });

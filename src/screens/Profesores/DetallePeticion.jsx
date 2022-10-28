@@ -23,17 +23,41 @@ const DetallePeticion = (props) => {
 
     return (
         <View>
-                <Text> id: {peticion.idPeticion}</Text>
-                <Text> Alumno: {peticion.anombre} </Text>
-                <Text> Descripcion: {peticion.descripcion}</Text>
-                <Text> Hora: {peticion.horario}:00 </Text>
-                <Text> Estado: {peticion.estadoPeticion}</Text>
-                <View>
+                <Text style={styles.title}> Alumno: {peticion.anombre} </Text>
+                <Text style={styles.text}> Descripcion: {peticion.descripcion}</Text>
+                <Text style={styles.text}> Hora: {peticion.horario}:00 </Text>
+                <Text style={styles.text}> Estado: {peticion.estadoPeticion}</Text>
+                <View style={styles.container}>
                     <CustomButton text={"Aceptar Peticion"} onPress={() => cambiarPeticion(peticion.idPeticion, 2)} />
                     <CustomButton text={"Rechazar Peticion"} onPress={() => cambiarPeticion(peticion.idPeticion, 3)} />
                 </View> 
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    title: {
+        marginLeft: 10,
+        textBold: 10,
+        fontSize: 30,
+        marginTop: 15,
+    },
+    text: {
+        marginLeft: 10,
+        fontSize: 15,
+        marginTop: 7,
+    },
+    texts: {
+        marginLeft: 10,
+        fontSize: 15,
+        marginTop: 4,
+    },
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 15,
+        flex:1
+    }
+});
 
 export default DetallePeticion;

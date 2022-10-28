@@ -186,7 +186,7 @@ export const ProfesorRegister = async (userState) => {
             return profesor
             })
             .catch((err) => { // status >= 300
-            console.log(`error `, err.response);
+            console.log(`error `, err.response); 
             throw err //propagar error
         }); // => Promise<AxiosResponse>
     }

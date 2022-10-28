@@ -25,7 +25,7 @@ const ReservarClase = ({route}) => {
           console.log("error");
         } else {
         await ClaseReservar(userState).then(() => {
-              navigation.navigate('Home');  
+              navigation.navigate('HomeAlumno');  
           });
         }
       }

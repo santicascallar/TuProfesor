@@ -11,7 +11,7 @@ export default function PeticionesList ({peticion}){
         navigation.navigate('DetallePeticion', {id:peticion.idPeticion})
       }}>
         
-    <View>
+    <View style={styles.container2}>
         <Text> id: {peticion.idPeticion}</Text>
         <Text style={styles.text}> Alumno: {peticion.nombre}</Text>
         <Text style={styles.text}> Descripcion: {peticion.descripcion}</Text>
@@ -38,5 +38,8 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom: -5,
         width: 350,
-    }
+    },
+    container2: {
+        paddingBottom: 30
+    },
 });
